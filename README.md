@@ -1,2 +1,2 @@
 # SaveFileLogNAS
-LogFile saver
+LogFile saver for my NAS
