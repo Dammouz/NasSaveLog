@@ -4,7 +4,7 @@ using Common.Extensions;
 using NUnit.Framework;
 using SaveFileLogNAS.Business;
 
-namespace Common.Tests.Extensions
+namespace SaveFileLogNAS.Tests.Helpers
 {
     [TestFixture]
     public class ApplyExtensionsTests

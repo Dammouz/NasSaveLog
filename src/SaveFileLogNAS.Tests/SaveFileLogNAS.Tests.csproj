@@ -53,8 +53,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers.Tests\ApplyExtensions.Tests.cs" />
-    <Compile Include="ViewModel.Tests\SaveFileLogNASViewModel.Tests.cs" />
+    <Compile Include="Business\LogNas.Tests.cs" />
+    <Compile Include="Globalization\Locale.Tests.cs" />
+    <Compile Include="Helpers\ApplyExtensions.Tests.cs" />
+    <Compile Include="ViewModel\SaveFileLogNASViewModel.Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,10 +72,6 @@
       <Project>{620ea00f-1539-43a8-955b-ec95ef8e492a}</Project>
       <Name>SaveFileLogNAS</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Business.Tests\" />
-    <Folder Include="View.Tests\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

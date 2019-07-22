@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using SaveFileLogNAS.ViewModel;
 
-namespace SaveFileLogNAS.Tests
+namespace SaveFileLogNAS.Tests.ViewModel
 {
     [TestFixture]
     public class SaveFileLogNASViewModelTests

@@ -43,7 +43,7 @@ namespace SaveFileLogNAS.Globalization
                 case "fr-FR":
                     return new GuiFrench();
 
-                case "en-us":
+                case "en-US":
                 default:
                     return new GuiEnglish();
             }
