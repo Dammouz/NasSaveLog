@@ -53,7 +53,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\ApplyExtensions.Tests.cs" />
+    <Compile Include="Helpers.Tests\ApplyExtensions.Tests.cs" />
     <Compile Include="ViewModel.Tests\SaveFileLogNASViewModel.Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
