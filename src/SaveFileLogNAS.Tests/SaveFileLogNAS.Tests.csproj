@@ -53,8 +53,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\GenericExtensions.Tests.cs" />
-    <Compile Include="Helpers\StringExtensions.Tests.cs" />
+    <Compile Include="Helpers\ApplyExtensions.Tests.cs" />
     <Compile Include="ViewModel.Tests\SaveFileLogNASViewModel.Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,6 +62,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{C007D19C-35F2-4C55-9DBA-D9FA3A712E50}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SaveFileLogNAS\SaveFileLogNAS.csproj">
       <Project>{620ea00f-1539-43a8-955b-ec95ef8e492a}</Project>
       <Name>SaveFileLogNAS</Name>

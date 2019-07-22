@@ -46,6 +46,8 @@
     <Compile Include="CommonHtmlStyle.cs" />
     <Compile Include="CommonText.cs" />
     <Compile Include="CommonWriteStream.cs" />
+    <Compile Include="Extensions\GenericExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

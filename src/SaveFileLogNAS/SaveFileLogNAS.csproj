@@ -62,8 +62,6 @@
     <Compile Include="Common\AppConst.cs" />
     <Compile Include="Common\CommonConsts.cs" />
     <Compile Include="Helpers\BindableBase.cs" />
-    <Compile Include="Helpers\GenericExtensions.cs" />
-    <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Globalization\GuiEnglish.cs" />
     <Compile Include="Globalization\GuiFrench.cs" />
     <Compile Include="Globalization\IGui.cs" />
