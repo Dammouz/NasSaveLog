@@ -31,12 +31,12 @@ namespace SaveFileLogNAS.ViewModel
         /// <summary>
         /// Locales.
         /// </summary>
-        public IGui Locales { get; }
+        public static IGui Locales { get; private set; }
 
         /// <summary>
         /// Waiting time before clearing GUI once file saved.
         /// </summary>
-        private static int WaitingTimeAfterSaving;
+        private static int WaitingTimeAfterSaving { get; set; }
 
         /// <summary>
         /// Log NAS.
