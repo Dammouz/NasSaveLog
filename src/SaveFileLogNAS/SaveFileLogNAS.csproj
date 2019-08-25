@@ -59,8 +59,8 @@
     </ApplicationDefinition>
     <Compile Include="Business\ILogNas.cs" />
     <Compile Include="Business\LogNas.cs" />
-    <Compile Include="Common\AppConst.cs" />
-    <Compile Include="Common\CommonConsts.cs" />
+    <Compile Include="Common\AppConstants.cs" />
+    <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Helpers\BindableBase.cs" />
     <Compile Include="Globalization\GuiEnglish.cs" />
     <Compile Include="Globalization\GuiFrench.cs" />

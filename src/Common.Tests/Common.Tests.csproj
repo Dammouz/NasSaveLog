@@ -53,10 +53,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonDebugTools.Tests.cs" />
-    <Compile Include="CommonText.Tests.cs" />
-    <Compile Include="Extensions\GenericExtensions.Tests.cs" />
-    <Compile Include="Extensions\StringExtensions.Tests.cs" />
+    <Compile Include="CommonDebugToolsTests.cs" />
+    <Compile Include="CommonTextTests.cs" />
+    <Compile Include="Extensions\GenericExtensionsTests.cs" />
+    <Compile Include="Extensions\StringExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

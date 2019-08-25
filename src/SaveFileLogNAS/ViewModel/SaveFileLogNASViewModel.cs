@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
@@ -142,7 +141,7 @@ namespace SaveFileLogNAS.ViewModel
             }
             catch (Exception ex)
             {
-                CommonText.LogMsg($"{Locales.ErrorCreatingFolder}{CommonText.NewLine}{ex.Message}");
+                CommonText.LogMsg($"{Locales.ErrorCreatingFolder}{ComonTextConstants.NewLine}{ex.Message}");
                 path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             }
             return path;
@@ -184,7 +183,7 @@ namespace SaveFileLogNAS.ViewModel
             }
 
             // Clear interface after saving
-            if (MessageBox.Show($"{Locales.MessageBoxLogSavedOK}{CommonText.NewLine}{LogNas.FullPath}") == MessageBoxResult.OK)
+            if (MessageBox.Show($"{Locales.MessageBoxLogSavedOK}{ComonTextConstants.NewLine}{LogNas.FullPath}") == MessageBoxResult.OK)
             {
                 System.Threading.Thread.Sleep(WaitingTimeAfterSaving);
                 ClearLog();
@@ -216,13 +215,13 @@ namespace SaveFileLogNAS.ViewModel
             var helpMessage = $"{Locales.MessageBoxHelpHelp}";
 
             // About:
-            var aboutMessage = $"{Locales.MessageBoxHelpAbout}{CommonText.NewLine}{CommonText.NewLine}"
-                + $"{CommonConsts.SoftCompanyName} - {CommonConsts.SoftName}{CommonText.NewLine}"
-                + $"{Locales.MessageBoxHelpBuild}{CommonConsts.SoftDate}{CommonText.NewLine}"
-                + $"{Locales.MessageBoxHelpVersion}{CommonConsts.SoftVersion}{CommonText.NewLine}";
+            var aboutMessage = $"{Locales.MessageBoxHelpAbout}{ComonTextConstants.NewLine}{ComonTextConstants.NewLine}"
+                + $"{CommonConsts.SoftCompanyName} - {CommonConsts.SoftName}{ComonTextConstants.NewLine}"
+                + $"{Locales.MessageBoxHelpBuild}{CommonConsts.SoftDate}{ComonTextConstants.NewLine}"
+                + $"{Locales.MessageBoxHelpVersion}{CommonConsts.SoftVersion}{ComonTextConstants.NewLine}";
 
             // Fill MessageBox parameters
-            var messageBoxContent = $"{helpMessage}{CommonText.NewLine}{CommonText.NewLine}{CommonText.NewLine}{aboutMessage}";
+            var messageBoxContent = $"{helpMessage}{ComonTextConstants.NewLine}{ComonTextConstants.NewLine}{ComonTextConstants.NewLine}{aboutMessage}";
             var messageBoxCaption = Locales.MessageBoxHelpCaption;
 
             MessageBox.Show(messageBoxContent, messageBoxCaption, MessageBoxButton.OK, MessageBoxImage.Question);

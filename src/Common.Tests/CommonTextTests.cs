@@ -32,11 +32,11 @@ namespace Common.Tests
 
             // Act
             var msgLogged = CommonText.LogMsg(message);
-            var expected = $"{CommonText.NewLine}{CommonText.FormatDate(DateTime.Now, DateFormat.DateDebug)} : Test de fonction LogMsg().";
+            var expected = $"{ComonTextConstants.NewLine}{CommonText.FormatDate(DateTime.Now, DateFormat.DateDebug)} : Test de fonction LogMsg().";
 
             // Assert
             Assert.That(msgLogged, Is.EqualTo(expected),
-               $"Mismatching between :{CommonText.NewLine}{msgLogged}{CommonText.NewLine}And expected:{CommonText.NewLine}{expected}");
+               $"Mismatching between :{ComonTextConstants.NewLine}{msgLogged}{ComonTextConstants.NewLine}And expected:{ComonTextConstants.NewLine}{expected}");
         }
     }
 }

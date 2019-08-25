@@ -20,7 +20,7 @@ namespace Common
         /// <returns>Returns HML formated trees of properties</returns>
         public static string VarDumpFormatHtml(object obj, int recursion)
         {
-            return CommonText.HtmlFormatPre(VarDump(obj, recursion));
+            return CommonHtmlMaker.HtmlFormatPre(VarDump(obj, recursion));
         }
 
 

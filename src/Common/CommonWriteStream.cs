@@ -23,9 +23,8 @@ namespace Common
         /// <returns>Writing is OK or NOK</returns>
         public static bool WriteFilePath(string filePath, string fileName, string fileContent, bool appendToFile = true)
         {
-            var isOk = false;
-
             Console.WriteLine(fileContent);
+            bool isOk;
             try
             {
                 using (var swFile = new StreamWriter(Path.Combine(filePath, fileName), appendToFile, Encoding.UTF8))
@@ -43,7 +42,6 @@ namespace Common
             return isOk;
         }
 
-
         /// <summary>
         /// Write text in a file with secure path.
         /// </summary>
@@ -55,7 +53,7 @@ namespace Common
         /// <returns></returns>
         public static bool WriteFilePath(string filePath, string fileName, IEnumerable<string> fileContents, bool appendToFile = true)
         {
-            var fileContent = string.Join(CommonText.NewLine, fileContents);
+            var fileContent = string.Join(ComonTextConstants.NewLine, fileContents);
             return WriteFilePath(filePath, fileName, fileContent, appendToFile);
         }
 

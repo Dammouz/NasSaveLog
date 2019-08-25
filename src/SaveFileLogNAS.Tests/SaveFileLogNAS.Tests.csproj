@@ -53,10 +53,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business\LogNas.Tests.cs" />
-    <Compile Include="Globalization\Locale.Tests.cs" />
-    <Compile Include="Helpers\ApplyExtensions.Tests.cs" />
-    <Compile Include="ViewModel\SaveFileLogNASViewModel.Tests.cs" />
+    <Compile Include="Business\LogNasTests.cs" />
+    <Compile Include="Globalization\LocaleTests.cs" />
+    <Compile Include="Helpers\ApplyExtensionsTests.cs" />
+    <Compile Include="ViewModel\SaveFileLogNASViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

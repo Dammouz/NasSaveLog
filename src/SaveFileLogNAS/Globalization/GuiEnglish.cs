@@ -42,11 +42,11 @@ namespace SaveFileLogNAS.Globalization
         #region Help message box
 
         public string MessageBoxHelpCaption { get; } = "Help";
-        public string MessageBoxHelpHelp { get; } = $"HELP !{CommonText.NewLine}{CommonText.NewLine}"
+        public string MessageBoxHelpHelp { get; } = $"HELP !{ComonTextConstants.NewLine}{ComonTextConstants.NewLine}"
                                                   + $"Copy log files content from Open Media Vault "
                                                   + $"in the main text box. Then click on \"Save\" to save"
                                                   + $"the file in the log folder. If this one doesn't exist, "
-                                                  + $"the log file will be save on the Desktop.{CommonText.NewLine}"
+                                                  + $"the log file will be save on the Desktop.{ComonTextConstants.NewLine}"
                                                   + $"Add subsidiary informations in the second field.";
         public string MessageBoxHelpAbout { get; } = "ABOUT :";
         public string MessageBoxHelpBuild { get; } = "Build :   ";

@@ -1,6 +1,6 @@
 ﻿namespace SaveFileLogNAS.Common
 {
-    public static class AppConst
+    public static class AppConstants
     {
         #region Initial values
 

@@ -43,9 +43,11 @@
   <ItemGroup>
     <Compile Include="CommonDebugTools.cs" />
     <Compile Include="CommonEnums.cs" />
+    <Compile Include="CommonHtmlMaker.cs" />
     <Compile Include="CommonHtmlStyle.cs" />
     <Compile Include="CommonText.cs" />
     <Compile Include="CommonWriteStream.cs" />
+    <Compile Include="ComonTextConstants.cs" />
     <Compile Include="Extensions\GenericExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
