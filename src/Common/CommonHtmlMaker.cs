@@ -178,7 +178,7 @@ namespace Common
             resultContent.Append("<tbody>");
             foreach (var rowOfCells in tableContent)
             {
-                var rowAltClass = isRowAlt ? " class=\"alt\"" : "";
+                var rowAltClass = isRowAlt ? " class=\"alt\"" : string.Empty;
                 resultContent.Append($"<tr{rowAltClass}>");
                 foreach (var cell in rowOfCells)
                 {

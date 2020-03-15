@@ -66,7 +66,12 @@ namespace Common
                         indent = new StringBuilder(trail).Insert(0, space, recursion - 1).ToString();
                     }
 
-                    if (value != null)
+                    if (value == null)
+                    {
+                        // Add empty (null) property to return string
+                        result.Append($"{indent}{property.Name} = null{newLine}");
+                    }
+                    else
                     {
                         // If the value is a string, add quotation marks
                         var displayValue = (value is string) ? $"\"{value}\"" : value.ToString();
@@ -76,14 +81,7 @@ namespace Common
 
                         try
                         {
-                            if (!(value is ICollection))
-                            {
-                                // Call VarDump() again to list child properties.
-                                // This throws an exception if the current property value is of an unsupported type
-                                // (eg. it has not properties)
-                                result.Append(VarDump(value, recursion + 1));
-                            }
-                            else
+                            if (value is ICollection)
                             {
                                 // The value is a collection (eg. it's an arraylist or generic list)
                                 // so loop through its elements and dump their properties
@@ -103,13 +101,15 @@ namespace Common
 
                                 result.Append(VarDump(value, recursion + 1));
                             }
+                            else
+                            {
+                                // Call VarDump() again to list child properties.
+                                // This throws an exception if the current property value is of an unsupported type
+                                // (eg. it has not properties)
+                                result.Append(VarDump(value, recursion + 1));
+                            }
                         }
                         catch { }
-                    }
-                    else
-                    {
-                        // Add empty (null) property to return string
-                        result.Append($"{indent}{property.Name} = null{newLine}");
                     }
                 }
                 catch
@@ -118,6 +118,7 @@ namespace Common
                     // I don't know exactly why this happens, so for now i will ignore them...
                 }
             }
+
             return result.ToString();
         }
 

@@ -19,6 +19,7 @@ namespace Common
         public static string LogMsg(string messageToLog)
         {
             Console.WriteLine($"{FormatDate(DateTime.Now, DateFormat.DateDebug)} : {messageToLog}"); // Debug
+
             return $"{ComonTextConstants.NewLine}{FormatDate(DateTime.Now, DateFormat.DateDebug)} : {messageToLog}";
         }
 

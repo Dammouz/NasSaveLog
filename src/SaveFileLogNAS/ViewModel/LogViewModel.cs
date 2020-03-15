@@ -10,7 +10,8 @@ namespace SaveFileLogNAS.ViewModel
         public string LogContentText
         {
             get { return _logContentText; }
-            set {
+            set
+            {
                 _logContentText = value;
                 OnPropertyChanged(nameof(LogContentText));
             }
@@ -23,7 +24,8 @@ namespace SaveFileLogNAS.ViewModel
         public string InfoNameText
         {
             get { return _infoNameText; }
-            set {
+            set
+            {
                 _infoNameText = value;
                 OnPropertyChanged(nameof(InfoNameText));
             }
@@ -36,7 +38,8 @@ namespace SaveFileLogNAS.ViewModel
         public bool IsError
         {
             get { return _isError; }
-            set {
+            set
+            {
                 _isError = value;
                 OnPropertyChanged(nameof(IsError));
             }

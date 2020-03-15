@@ -53,7 +53,8 @@ namespace SaveFileLogNAS.ViewModel
         public bool IsError
         {
             get { return _isError; }
-            set {
+            set
+            {
                 _isError = value;
                 LogObjectViewModel.IsError = _isError;
                 LogNas.IsError = _isError;
@@ -79,14 +80,15 @@ namespace SaveFileLogNAS.ViewModel
         /// <returns>Log content field is good</returns>
         private bool IsFieldLogContentOK()
         {
-            if (!IsFieldOK(LogObjectViewModel.LogContentText, Locales.InitialTextOnLogContent, Locales.ErrorOnFieldLogContent))
+            if (IsFieldOK(LogObjectViewModel.LogContentText, Locales.InitialTextOnLogContent, Locales.ErrorOnFieldLogContent))
             {
-                return false;
+                LogNas.Content = LogObjectViewModel.LogContentText;
+                LogNas.Contents = new List<string> { LogObjectViewModel.LogContentText };
+
+                return true;
             }
 
-            LogNas.Content = LogObjectViewModel.LogContentText;
-            LogNas.Contents = new List<string> { LogObjectViewModel.LogContentText };
-            return true;
+            return false;
         }
 
         /// <summary>
@@ -95,13 +97,14 @@ namespace SaveFileLogNAS.ViewModel
         /// <returns>Info name is good</returns>
         private bool IsFieldInfoNameOK()
         {
-            if (!IsFieldOK(LogObjectViewModel.InfoNameText, Locales.InitialTextOnInfoName, Locales.ErrorOnFieldInfoName))
+            if (IsFieldOK(LogObjectViewModel.InfoNameText, Locales.InitialTextOnInfoName, Locales.ErrorOnFieldInfoName))
             {
-                return false;
+                LogNas.LogInfo = LogObjectViewModel.InfoNameText;
+
+                return true;
             }
 
-            LogNas.LogInfo = LogObjectViewModel.InfoNameText;
-            return true;
+            return false;
         }
 
         /// <summary>
@@ -113,15 +116,16 @@ namespace SaveFileLogNAS.ViewModel
         /// <returns></returns>
         private static bool IsFieldOK(string fieldContent, string fieldInitialValue, string fieldErrorMessage/*, object controlField*/)
         {
-            if (!string.IsNullOrEmpty(fieldContent) && !fieldContent.Equals(fieldInitialValue))
+            if (string.IsNullOrEmpty(fieldContent) || fieldContent.Equals(fieldInitialValue))
             {
-                return true;
+                // If field is not OK
+                MessageBox.Show(fieldErrorMessage);
+                //controlField.Focus();
+
+                return false;
             }
 
-            // If field is not OK
-            MessageBox.Show(fieldErrorMessage);
-            //controlField.Focus();
-            return false;
+            return true;
         }
 
         /// <summary>
@@ -156,7 +160,8 @@ namespace SaveFileLogNAS.ViewModel
         /// </summary>
         public ICommand SaveLogCommand
         {
-            get {
+            get
+            {
                 _saveLogCommand = new RelayCommand(SaveLog);
                 return _saveLogCommand;
             }
@@ -199,7 +204,8 @@ namespace SaveFileLogNAS.ViewModel
         /// </summary>
         public ICommand DisplayHelpCommand
         {
-            get {
+            get
+            {
                 _displayHelpCommand = new RelayCommand(DisplayHelp);
                 return _displayHelpCommand;
             }
@@ -236,7 +242,8 @@ namespace SaveFileLogNAS.ViewModel
         /// </summary>
         public ICommand ClearLogCommand
         {
-            get {
+            get
+            {
                 _clearLogCommand = new RelayCommand(ClearLog);
                 return _clearLogCommand;
             }

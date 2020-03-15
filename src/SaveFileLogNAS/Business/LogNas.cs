@@ -26,21 +26,18 @@ namespace SaveFileLogNAS.Business
         /// Errors.
         /// </summary>
         public bool IsError { get; set; } = false;
-        public string LogType { get { return IsError ? "error" : "log"; } }
+        public string LogType => IsError ? "error" : "log";
 
         /// <summary>
         /// File name.
         /// </summary>
         public string LogExt { get; set; } = "log";
-        public string FullLogName
-        {
-            get { return $"{CommonConsts.SoftName}-{LogType}-{CommonText.FormatDate(LogDateTime, DateFormat.DateFile)}-{CommonText.MakeValidFileNameFromInvalid(LogInfo)}.{LogExt}"; }
-        }
+        public string FullLogName => $"{CommonConsts.SoftName}-{LogType}-{CommonText.FormatDate(LogDateTime, DateFormat.DateFile)}-{CommonText.MakeValidFileNameFromInvalid(LogInfo)}.{LogExt}";
 
         /// <summary>
         /// Paths.
         /// </summary>
         public string Path { get; set; }
-        public string FullPath { get { return System.IO.Path.Combine(Path, FullLogName); } }
+        public string FullPath => System.IO.Path.Combine(Path, FullLogName);
     }
 }

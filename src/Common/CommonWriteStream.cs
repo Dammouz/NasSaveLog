@@ -54,6 +54,7 @@ namespace Common
         public static bool WriteFilePath(string filePath, string fileName, IEnumerable<string> fileContents, bool appendToFile = true)
         {
             var fileContent = string.Join(ComonTextConstants.NewLine, fileContents);
+
             return WriteFilePath(filePath, fileName, fileContent, appendToFile);
         }
 
@@ -88,6 +89,7 @@ namespace Common
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+
                 return false;
             }
         }
