@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -21,7 +21,7 @@ namespace Common
         /// <param name="fileContent">Content to write</param>
         /// <param name="appendToFile">Append content to file</param>
         /// <returns>Writing is OK or NOK</returns>
-        public static bool WriteFilePath(string filePath, string fileName, string fileContent, bool appendToFile = true)
+        public static bool WriteFilePath(string filePath, string fileName, string fileContent, bool appendToFile)
         {
             Console.WriteLine(fileContent);
             bool isOk;
@@ -47,15 +47,40 @@ namespace Common
         /// </summary>
         /// <param name="filePath">Path to fhe file</param>
         /// <param name="fileName">File name</param>
+        /// <param name="fileContent">Content to write</param>
+        /// <returns>Writing is OK or NOK</returns>
+        public static bool WriteFilePath(string filePath, string fileName, string fileContent)
+        {
+            return WriteFilePath(filePath, fileName, fileContent, true);
+        }
+
+        /// <summary>
+        /// Write text in a file with secure path.
+        /// </summary>
+        /// <param name="filePath">Path to fhe file</param>
+        /// <param name="fileName">File name</param>
         /// <param name="fileContents">Enumerable of content to write</param>
         /// <param name="appendToFile">Append content to file</param>
         /// <returns>Writing is OK or NOK</returns>
         /// <returns></returns>
-        public static bool WriteFilePath(string filePath, string fileName, IEnumerable<string> fileContents, bool appendToFile = true)
+        public static bool WriteFilePath(string filePath, string fileName, IEnumerable<string> fileContents, bool appendToFile)
         {
             var fileContent = string.Join(ComonTextConstants.NewLine, fileContents);
 
             return WriteFilePath(filePath, fileName, fileContent, appendToFile);
+        }
+
+        /// <summary>
+        /// Write text in a file with secure path.
+        /// </summary>
+        /// <param name="filePath">Path to fhe file</param>
+        /// <param name="fileName">File name</param>
+        /// <param name="fileContents">Enumerable of content to write</param>
+        /// <returns>Writing is OK or NOK</returns>
+        /// <returns></returns>
+        public static bool WriteFilePath(string filePath, string fileName, IEnumerable<string> fileContents)
+        {
+            return WriteFilePath(filePath, fileName, fileContents, true);
         }
 
         #endregion WriteIntoFile

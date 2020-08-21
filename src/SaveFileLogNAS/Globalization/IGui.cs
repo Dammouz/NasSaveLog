@@ -1,4 +1,4 @@
-﻿namespace SaveFileLogNAS.Globalization
+namespace SaveFileLogNAS.Globalization
 {
     public interface IGui
     {

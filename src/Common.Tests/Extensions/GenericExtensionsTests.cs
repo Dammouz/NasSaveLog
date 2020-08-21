@@ -1,4 +1,4 @@
-﻿using Common.Extensions;
+using Common.Extensions;
 using NUnit.Framework;
 
 namespace Common.Tests.Extensions

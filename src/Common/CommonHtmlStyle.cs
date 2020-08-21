@@ -1,4 +1,4 @@
-﻿namespace Common
+namespace Common
 {
     /// <summary>
     /// Static class CommonHtmlStyle.

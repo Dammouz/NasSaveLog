@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using System.Windows.Input;
 using SaveFileLogNAS.Common;
 using SaveFileLogNAS.ViewModel;
@@ -16,7 +16,6 @@ namespace SaveFileLogNAS.Views
             InitializeComponent();
             DataContext = saveFileLogNASViewModel;
         }
-
 
         #region Behaviors
 

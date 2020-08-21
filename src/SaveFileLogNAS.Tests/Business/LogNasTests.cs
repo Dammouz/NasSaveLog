@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using SaveFileLogNAS.Business;
 
 namespace SaveFileLogNAS.Tests.Business

@@ -1,4 +1,4 @@
-﻿using SaveFileLogNAS.ViewModel.Events;
+using SaveFileLogNAS.ViewModel.Events;
 
 namespace SaveFileLogNAS.ViewModel
 {

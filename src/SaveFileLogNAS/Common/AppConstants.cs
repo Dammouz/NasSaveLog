@@ -1,4 +1,4 @@
-﻿namespace SaveFileLogNAS.Common
+namespace SaveFileLogNAS.Common
 {
     public static class AppConstants
     {

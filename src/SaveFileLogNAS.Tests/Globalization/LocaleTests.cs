@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using SaveFileLogNAS.Globalization;
 
 namespace SaveFileLogNAS.Tests.Globalization

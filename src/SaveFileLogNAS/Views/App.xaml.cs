@@ -1,4 +1,5 @@
-﻿using System.Windows;
+using System;
+using System.Windows;
 
 namespace SaveFileLogNAS.Views
 {
@@ -7,5 +8,12 @@ namespace SaveFileLogNAS.Views
     /// </summary>
     public partial class App : Application
     {
+        [STAThread]
+        private static void Main(string[] args)
+        {
+            var app = new App();
+            app.InitializeComponent();
+            app.Run();
+        }
     }
 }
