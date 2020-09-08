@@ -2,7 +2,8 @@ using Common;
 
 namespace SaveFileLogNAS.Globalization
 {
-    public class GuiFrench : IGui
+    public class GuiFrench
+        : IGui
     {
         #region Initial values
 

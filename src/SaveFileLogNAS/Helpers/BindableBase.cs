@@ -8,7 +8,8 @@ namespace SaveFileLogNAS.Helpers
     /// <summary>
     /// Implementation of <see cref="INotifyPropertyChanged"/> to simplify models.
     /// </summary>
-    public abstract class BindableBase : INotifyPropertyChanged
+    public abstract class BindableBase
+        : INotifyPropertyChanged
     {
         /// <summary>
         /// Checks if a property already matches a desired value. Sets the property and

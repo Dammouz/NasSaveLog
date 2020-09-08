@@ -11,7 +11,7 @@ namespace Common.Tests
         public void Check_if_VarDump_working(object varToDump, object expectedResult, int recursion)
         {
             var resultOfVarDump = CommonDebugTools.VarDump(varToDump, recursion);
-            Assert.That(resultOfVarDump, Is.EqualTo(expectedResult), $"Essaye encore de trouver le VarDump de {varToDump}, type: {varToDump.GetType().ToString()} depth: {recursion}");
+            Assert.That(resultOfVarDump, Is.EqualTo(expectedResult), $"Essaye encore de trouver le VarDump de {varToDump}, type: {varToDump.GetType().Name} depth: {recursion}");
         }
     }
 }

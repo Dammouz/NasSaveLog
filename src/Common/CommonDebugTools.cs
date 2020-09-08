@@ -81,18 +81,18 @@ namespace Common
 
                         try
                         {
-                            if (value is ICollection)
+                            if (value is ICollection collection)
                             {
                                 // The value is a collection (eg. it's an arraylist or generic list)
                                 // so loop through its elements and dump their properties
                                 var elementCount = 0;
-                                foreach (object element in (ICollection)value)
+                                foreach (object element in collection)
                                 {
                                     var elementName = $"{property.Name}[{elementCount}]";
                                     indent = new StringBuilder(trail).Insert(0, space, recursion).ToString();
 
                                     // Display the collection element name and type
-                                    result.Append($"{indent}{elementName} = {element.ToString()}{newLine}");
+                                    result.Append($"{indent}{elementName} = {element}{newLine}");
 
                                     // Display the child properties
                                     result.Append(VarDump(element, recursion + 2));

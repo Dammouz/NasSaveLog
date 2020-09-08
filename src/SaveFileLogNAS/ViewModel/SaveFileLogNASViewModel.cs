@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
@@ -11,16 +12,22 @@ using SaveFileLogNAS.Helpers;
 
 namespace SaveFileLogNAS.ViewModel
 {
-    public class SaveFileLogNASViewModel : BindableBase
+    public class SaveFileLogNASViewModel
+        : BindableBase
     {
         #region .ctor
 
         public SaveFileLogNASViewModel()
         {
-            WaitingTimeAfterSaving = Properties.Settings.Default.Delay;
+            var delay = ConfigurationManager.AppSettings["WaitingTimeAfterSavingInMs"];
+            int.TryParse(delay, out var waitingTimeAfterSaving);
+            WaitingTimeAfterSavingInMs = waitingTimeAfterSaving;
+
+            var locale = ConfigurationManager.AppSettings["Locale"];
+            Locales = LocaleHelper.MakeLocales(locale);
+
             LogNas = new LogNas();
             LogObjectViewModel = new LogViewModel();
-            Locales = Locale.MakeLocales(Properties.Settings.Default.Locale);
         }
 
         #endregion .ctor
@@ -28,14 +35,19 @@ namespace SaveFileLogNAS.ViewModel
         #region Properties
 
         /// <summary>
-        /// Locales.
+        /// Path to NAS log folder.
+        /// </summary>
+        private string NasFolder => ConfigurationManager.AppSettings["NASFolder"];
+
+        /// <summary>
+        /// Locale used for the GUI.
         /// </summary>
         public static IGui Locales { get; private set; }
 
         /// <summary>
-        /// Waiting time before clearing GUI once file saved.
+        /// Waiting time in ms before clearing GUI once file saved.
         /// </summary>
-        private static int WaitingTimeAfterSaving { get; set; }
+        private static int WaitingTimeAfterSavingInMs { get; set; }
 
         /// <summary>
         /// Log NAS.
@@ -52,7 +64,7 @@ namespace SaveFileLogNAS.ViewModel
         /// </summary>
         public bool IsError
         {
-            get { return _isError; }
+            get => _isError;
             set
             {
                 _isError = value;
@@ -83,7 +95,10 @@ namespace SaveFileLogNAS.ViewModel
             if (IsFieldOK(LogObjectViewModel.LogContentText, Locales.InitialTextOnLogContent, Locales.ErrorOnFieldLogContent))
             {
                 LogNas.Content = LogObjectViewModel.LogContentText;
-                LogNas.Contents = new List<string> { LogObjectViewModel.LogContentText };
+                LogNas.Contents = new List<string>
+                {
+                    LogObjectViewModel.LogContentText
+                };
 
                 return true;
             }
@@ -179,7 +194,7 @@ namespace SaveFileLogNAS.ViewModel
             }
 
             LogNas.LogDateTime = DateTime.Now;
-            LogNas.Path = MakeValidPath(Properties.Settings.Default.NASFolder);
+            LogNas.Path = MakeValidPath(NasFolder);
 
             // Save results in file
             if (!CommonWriteStream.WriteFilePath(LogNas.Path, LogNas.FullLogName, LogNas.Content))
@@ -190,7 +205,7 @@ namespace SaveFileLogNAS.ViewModel
             // Clear interface after saving
             if (MessageBox.Show($"{Locales.MessageBoxLogSavedOK}{ComonTextConstants.NewLine}{LogNas.FullPath}") == MessageBoxResult.OK)
             {
-                System.Threading.Thread.Sleep(WaitingTimeAfterSaving);
+                System.Threading.Thread.Sleep(WaitingTimeAfterSavingInMs);
                 ClearLog();
             }
         }

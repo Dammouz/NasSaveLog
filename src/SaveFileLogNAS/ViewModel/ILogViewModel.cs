@@ -2,7 +2,8 @@ using System.ComponentModel;
 
 namespace SaveFileLogNAS.ViewModel
 {
-    public interface ILogViewModel : INotifyPropertyChanged
+    public interface ILogViewModel
+        : INotifyPropertyChanged
     {
         /// <summary>
         /// Log Content Text.

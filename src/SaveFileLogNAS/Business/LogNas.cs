@@ -4,7 +4,8 @@ using Common;
 
 namespace SaveFileLogNAS.Business
 {
-    public class LogNas : ILogNas
+    public class LogNas
+        : ILogNas
     {
         /// <summary>
         /// Content.

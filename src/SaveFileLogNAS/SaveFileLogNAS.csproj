@@ -3,10 +3,11 @@
   <PropertyGroup>
     <RootNamespace>SaveFileLogNAS</RootNamespace>
     <AssemblyName>SaveFileLogNAS</AssemblyName>
-    <ApplicationIcon>res\img\SaveFileLogNAS.ico</ApplicationIcon>
     <TargetFramework>net472</TargetFramework>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
+    <AppConfig>App.config</AppConfig>
+    <ApplicationIcon>res\img\SaveFileLogNAS.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -16,7 +17,7 @@
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="System.Xaml" />
+    <Reference Include="System.Configuration" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
 

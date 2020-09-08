@@ -63,7 +63,17 @@ namespace Common
         /// Format the date of assembly.
         /// </summary>
         /// <returns>Assembly date</returns>
-        public static DateTime AssemblyDate(System.Reflection.Assembly assembly = null)
+        public static DateTime AssemblyDate()
+        {
+            return AssemblyDate(null);
+        }
+
+        /// <summary>
+        /// Format the date of assembly.
+        /// </summary>
+        /// <param name="assembly">Assembly to analyze</param>
+        /// <returns>Assembly date</returns>
+        public static DateTime AssemblyDate(System.Reflection.Assembly assembly)
         {
             assembly = assembly ?? System.Reflection.Assembly.GetExecutingAssembly();
             // Assumes that in AssemblyInfo.cs, the version is specified as 1.0.* or the like,
@@ -95,13 +105,23 @@ namespace Common
                      : input.Substring(0, input.Length - suffixToRemove.Length);
         }
 
-
         /// <summary>
         /// Make a valid file name.
         /// </summary>
         /// <param name="name">Name to sanitize</param>
         /// <returns>Sanitized name</returns>
-        public static string MakeValidFileName(string name, string replacementChar = null)
+        public static string MakeValidFileName(string name)
+        {
+            return MakeValidFileName(name, null);
+        }
+
+        /// <summary>
+        /// Make a valid file name.
+        /// </summary>
+        /// <param name="name">Name to sanitize</param>
+        /// <param name="replacementChar">Replacement char for non valid char</param>
+        /// <returns>Sanitized name</returns>
+        public static string MakeValidFileName(string name, string replacementChar)
         {
             return Regex.Replace(name, ComonTextConstants.RegexValidPath, replacementChar ?? ComonTextConstants.ReplaceChar);
         }
@@ -111,12 +131,23 @@ namespace Common
         /// </summary>
         /// <param name="name">Name to sanitize</param>
         /// <returns>Sanitized name</returns>
-        public static string MakeValidFileNameFromInvalid(string name, string replacementChar = null)
+        public static string MakeValidFileNameFromInvalid(string name)
+        {
+            return MakeValidFileNameFromInvalid(name, null);
+        }
+
+        /// <summary>
+        /// Make a valid file name from invalid chars.
+        /// </summary>
+        /// <param name="name">Name to sanitize</param>
+        /// <param name="replacementChar">Replacement char for non valid char</param>
+        /// <returns>Sanitized name</returns>
+        public static string MakeValidFileNameFromInvalid(string name, string replacementChar)
         {
             var invalidChars = Regex.Escape(new string(System.IO.Path.GetInvalidFileNameChars()));
             var invalidRegStr = string.Format(@"([{0}]*\.+$)|([{0}]+)", invalidChars);
 
-            return Regex.Replace(name, invalidRegStr, ComonTextConstants.ReplaceChar);
+            return Regex.Replace(name, invalidRegStr, replacementChar ?? ComonTextConstants.ReplaceChar);
         }
 
         #endregion StringFixes

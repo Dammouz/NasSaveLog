@@ -2,14 +2,16 @@ using SaveFileLogNAS.ViewModel.Events;
 
 namespace SaveFileLogNAS.ViewModel
 {
-    public class LogViewModel : PropertyEvent, ILogViewModel
+    public class LogViewModel
+        : PropertyEvent,
+        ILogViewModel
     {
         /// <summary>
         /// Log Content Text.
         /// </summary>
         public string LogContentText
         {
-            get { return _logContentText; }
+            get => _logContentText;
             set
             {
                 _logContentText = value;
@@ -23,7 +25,7 @@ namespace SaveFileLogNAS.ViewModel
         /// </summary>
         public string InfoNameText
         {
-            get { return _infoNameText; }
+            get => _infoNameText;
             set
             {
                 _infoNameText = value;
@@ -37,7 +39,7 @@ namespace SaveFileLogNAS.ViewModel
         /// </summary>
         public bool IsError
         {
-            get { return _isError; }
+            get => _isError;
             set
             {
                 _isError = value;

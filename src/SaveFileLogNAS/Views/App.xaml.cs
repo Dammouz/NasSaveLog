@@ -6,7 +6,8 @@ namespace SaveFileLogNAS.Views
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App
+        : Application
     {
         [STAThread]
         private static void Main(string[] args)

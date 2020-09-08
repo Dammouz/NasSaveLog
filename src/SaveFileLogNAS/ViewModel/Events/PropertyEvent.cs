@@ -2,7 +2,8 @@ using System.ComponentModel;
 
 namespace SaveFileLogNAS.ViewModel.Events
 {
-    public class PropertyEvent : IProperyEvent
+    public class PropertyEvent
+        : IProperyEvent
     {
         /// <summary>
         /// Event raised.

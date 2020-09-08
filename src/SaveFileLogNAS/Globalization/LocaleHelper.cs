@@ -4,7 +4,7 @@ using Common.Extensions;
 
 namespace SaveFileLogNAS.Globalization
 {
-    public static class Locale
+    public static class LocaleHelper
     {
         /// <summary>
         /// Make language depending on string.
