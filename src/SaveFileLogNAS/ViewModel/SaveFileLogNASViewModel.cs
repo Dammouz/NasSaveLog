@@ -24,7 +24,7 @@ namespace SaveFileLogNAS.ViewModel
             WaitingTimeAfterSavingInMs = waitingTimeAfterSaving;
 
             var locale = ConfigurationManager.AppSettings["Locale"];
-            Locales = LocaleHelper.MakeLocales(locale);
+            Locale = LocaleHelper.MakeLocales(locale);
 
             LogNas = new LogNas();
             LogObjectViewModel = new LogViewModel();
@@ -42,7 +42,7 @@ namespace SaveFileLogNAS.ViewModel
         /// <summary>
         /// Locale used for the GUI.
         /// </summary>
-        public static IGui Locales { get; private set; }
+        public static IGui Locale { get; private set; }
 
         /// <summary>
         /// Waiting time in ms before clearing GUI once file saved.
@@ -92,7 +92,7 @@ namespace SaveFileLogNAS.ViewModel
         /// <returns>Log content field is good</returns>
         private bool IsFieldLogContentOK()
         {
-            if (IsFieldOK(LogObjectViewModel.LogContentText, Locales.InitialTextOnLogContent, Locales.ErrorOnFieldLogContent))
+            if (IsFieldOK(LogObjectViewModel.LogContentText, Locale.InitialTextOnLogContent, Locale.ErrorOnFieldLogContent))
             {
                 LogNas.Content = LogObjectViewModel.LogContentText;
                 LogNas.Contents = new List<string>
@@ -112,7 +112,7 @@ namespace SaveFileLogNAS.ViewModel
         /// <returns>Info name is good</returns>
         private bool IsFieldInfoNameOK()
         {
-            if (IsFieldOK(LogObjectViewModel.InfoNameText, Locales.InitialTextOnInfoName, Locales.ErrorOnFieldInfoName))
+            if (IsFieldOK(LogObjectViewModel.InfoNameText, Locale.InitialTextOnInfoName, Locale.ErrorOnFieldInfoName))
             {
                 LogNas.LogInfo = LogObjectViewModel.InfoNameText;
 
@@ -160,7 +160,7 @@ namespace SaveFileLogNAS.ViewModel
             }
             catch (Exception ex)
             {
-                CommonText.LogMsg($"{Locales.ErrorCreatingFolder}{ComonTextConstants.NewLine}{ex.Message}");
+                CommonText.LogMsg($"{Locale.ErrorCreatingFolder}{ComonTextConstants.NewLine}{ex.Message}");
                 path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             }
             return path;
@@ -203,7 +203,7 @@ namespace SaveFileLogNAS.ViewModel
             }
 
             // Clear interface after saving
-            if (MessageBox.Show($"{Locales.MessageBoxLogSavedOK}{ComonTextConstants.NewLine}{LogNas.FullPath}") == MessageBoxResult.OK)
+            if (MessageBox.Show($"{Locale.MessageBoxLogSavedOK}{ComonTextConstants.NewLine}{LogNas.FullPath}") == MessageBoxResult.OK)
             {
                 System.Threading.Thread.Sleep(WaitingTimeAfterSavingInMs);
                 ClearLog();
@@ -233,17 +233,17 @@ namespace SaveFileLogNAS.ViewModel
         public void DisplayHelp()
         {
             // Help:
-            var helpMessage = $"{Locales.MessageBoxHelpHelp}";
+            var helpMessage = $"{Locale.MessageBoxHelpHelp}";
 
             // About:
-            var aboutMessage = $"{Locales.MessageBoxHelpAbout}{ComonTextConstants.NewLine}{ComonTextConstants.NewLine}"
+            var aboutMessage = $"{Locale.MessageBoxHelpAbout}{ComonTextConstants.NewLine}{ComonTextConstants.NewLine}"
                 + $"{CommonConsts.SoftCompanyName} - {CommonConsts.SoftName}{ComonTextConstants.NewLine}"
-                + $"{Locales.MessageBoxHelpBuild}{CommonConsts.SoftDate}{ComonTextConstants.NewLine}"
-                + $"{Locales.MessageBoxHelpVersion}{CommonConsts.SoftVersion}{ComonTextConstants.NewLine}";
+                + $"{Locale.MessageBoxHelpBuild}{CommonConsts.SoftDate}{ComonTextConstants.NewLine}"
+                + $"{Locale.MessageBoxHelpVersion}{CommonConsts.SoftVersion}{ComonTextConstants.NewLine}";
 
             // Fill MessageBox parameters
             var messageBoxContent = $"{helpMessage}{ComonTextConstants.NewLine}{ComonTextConstants.NewLine}{ComonTextConstants.NewLine}{aboutMessage}";
-            var messageBoxCaption = Locales.MessageBoxHelpCaption;
+            var messageBoxCaption = Locale.MessageBoxHelpCaption;
 
             MessageBox.Show(messageBoxContent, messageBoxCaption, MessageBoxButton.OK, MessageBoxImage.Question);
         }
