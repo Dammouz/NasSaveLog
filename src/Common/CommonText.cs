@@ -75,11 +75,11 @@ namespace Common
         /// <returns>Assembly date</returns>
         public static DateTime AssemblyDate(System.Reflection.Assembly assembly)
         {
-            assembly = assembly ?? System.Reflection.Assembly.GetExecutingAssembly();
+            var innerAssembly = assembly ?? System.Reflection.Assembly.GetExecutingAssembly();
             // Assumes that in AssemblyInfo.cs, the version is specified as 1.0.* or the like,
             // with only 2 numbers specified; the next two are generated from the date.
             // This routine decodes them.
-            var version = assembly.GetName().Version;
+            var version = innerAssembly.GetName().Version;
 
             // v.Build is days since Jan. 1, 2000
             // v.Revision * 2 is seconds since local midnight
