@@ -4,4 +4,11 @@
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <Version>0.1.0.0</Version>
+    <Authors>Dammouz</Authors>
+    <Company>Dammouz</Company>
+    <Copyright>Copyright Dammouz © 2015 - $([System.DateTime]::Now.Year)</Copyright>
+  </PropertyGroup>
+
 </Project>

@@ -8,12 +8,12 @@ using Common;
 using GalaSoft.MvvmLight.Command;
 using SaveFileLogNAS.Business;
 using SaveFileLogNAS.Globalization;
-using SaveFileLogNAS.Helpers;
+using SaveFileLogNAS.ViewModel.Events;
 
 namespace SaveFileLogNAS.ViewModel
 {
     public class SaveFileLogNASViewModel
-        : BindableBase
+        : PropertyEvent
     {
         #region .ctor
 
@@ -73,7 +73,7 @@ namespace SaveFileLogNAS.ViewModel
                 RaisePropertyChanged(nameof(IsError));
             }
         }
-        private bool _isError = false;
+        private bool _isError;
 
         #endregion Properties
 
@@ -147,7 +147,7 @@ namespace SaveFileLogNAS.ViewModel
         /// Make a valid path for the log file in the path given in App.Config.
         /// Create a directory if not existing. Create on Desktop if an exception is thrown.
         /// </summary>
-        private string MakeValidPath(string path)
+        private static string MakeValidPath(string path)
         {
             if (Directory.Exists(path))
             {
@@ -156,7 +156,7 @@ namespace SaveFileLogNAS.ViewModel
 
             try
             {
-                DirectoryInfo di = Directory.CreateDirectory(path);
+                var di = Directory.CreateDirectory(path);
             }
             catch (Exception ex)
             {

@@ -109,7 +109,10 @@ namespace Common
                                 result.Append(VarDump(value, recursion + 1));
                             }
                         }
-                        catch { }
+                        catch
+                        {
+                            // Nothing to catch
+                        }
                     }
                 }
                 catch

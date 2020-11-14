@@ -4,7 +4,7 @@ namespace SaveFileLogNAS.ViewModel
 {
     public class LogViewModel
         : PropertyEvent,
-        ILogViewModel
+          ILogViewModel
     {
         /// <summary>
         /// Log Content Text.
@@ -15,7 +15,7 @@ namespace SaveFileLogNAS.ViewModel
             set
             {
                 _logContentText = value;
-                OnPropertyChanged(nameof(LogContentText));
+                RaisePropertyChanged();
             }
         }
         private string _logContentText = string.Empty;
@@ -29,7 +29,7 @@ namespace SaveFileLogNAS.ViewModel
             set
             {
                 _infoNameText = value;
-                OnPropertyChanged(nameof(InfoNameText));
+                RaisePropertyChanged();
             }
         }
         private string _infoNameText = string.Empty;
@@ -43,9 +43,9 @@ namespace SaveFileLogNAS.ViewModel
             set
             {
                 _isError = value;
-                OnPropertyChanged(nameof(IsError));
+                RaisePropertyChanged();
             }
         }
-        private bool _isError = false;
+        private bool _isError;
     }
 }
