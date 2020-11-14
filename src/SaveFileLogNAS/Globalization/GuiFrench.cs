@@ -17,6 +17,7 @@ namespace SaveFileLogNAS.Globalization
         public string AppTitle { get; } = "Save File Log NAS";
         public string CheckBoxIsError { get; } = "Erreur ?";
         public string ButtonSave { get; } = "Enregistrer";
+        public string ButtonOpen { get; } = "Ouvrir";
         public string ButtonHelp { get; } = "?";
         public string ButtonClear { get; } = "X";
 
@@ -29,6 +30,7 @@ namespace SaveFileLogNAS.Globalization
         public string TextBoxInfoNameToolTip { get; } = "Écrire les informations de nom ici ...";
         public string CheckBoxIsErrorToolTip { get; } = "Erreur ?";
         public string ButtonSaveToolTip { get; } = "Enregistrer";
+        public string ButtonOpenToolTip { get; } = "Ouvrir";
         public string ButtonHelpToolTip { get; } = "Aide ?";
         public string ButtonClearToolTip { get; } = "RAZ";
 

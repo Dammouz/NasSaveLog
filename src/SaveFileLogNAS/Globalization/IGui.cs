@@ -14,6 +14,7 @@ namespace SaveFileLogNAS.Globalization
         string AppTitle { get; }
         string CheckBoxIsError { get; }
         string ButtonSave { get; }
+        string ButtonOpen { get; }
         string ButtonHelp { get; }
         string ButtonClear { get; }
 
@@ -26,6 +27,7 @@ namespace SaveFileLogNAS.Globalization
         string TextBoxInfoNameToolTip { get; }
         string CheckBoxIsErrorToolTip { get; }
         string ButtonSaveToolTip { get; }
+        string ButtonOpenToolTip { get; }
         string ButtonHelpToolTip { get; }
         string ButtonClearToolTip { get; }
 

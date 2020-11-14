@@ -9,8 +9,8 @@
         Title="{Binding Locale.AppTitle, Mode=OneWay}"
         Width="500"
         Height="400"
-        MinWidth="300"
-        MinHeight="300"
+        MinWidth="350"
+        MinHeight="350"
         Padding="15"
         Margin="15"
         Background="#FFDDDDDD">
@@ -57,14 +57,28 @@
                          Height="20"
                          HorizontalAlignment="Left"
                          VerticalAlignment="Center" />
-               <Button Name="ButtonSave"
-                       Content="{Binding Locale.ButtonSave, Mode=OneWay}"
-                       Command="{Binding SaveLogCommand}"
-                       ToolTip="{Binding Locale.ButtonSaveToolTip, Mode=OneWay}"
-                       Width="80"
-                       Height="25"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center" />
+               <Grid HorizontalAlignment="Center" >
+                  <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="Auto" MinWidth="80" />
+                     <ColumnDefinition Width="Auto" MinWidth="25" />
+                     <ColumnDefinition Width="Auto" MinWidth="80" />
+                  </Grid.ColumnDefinitions>
+                  <Button Grid.Column="0" Name="ButtonSave"
+                          Content="{Binding Locale.ButtonSave, Mode=OneWay}"
+                          Command="{Binding SaveLogCommand}"
+                          ToolTip="{Binding Locale.ButtonSaveToolTip, Mode=OneWay}"
+                          Width="80"
+                          Height="25"
+                          VerticalAlignment="Center" />
+                  <Button Grid.Column="2"
+                      Name="ButtonOpen"
+                          Content="{Binding Locale.ButtonOpen, Mode=OneWay}"
+                          Command="{Binding OpenLogCommand}"
+                          ToolTip="{Binding Locale.ButtonOpenToolTip, Mode=OneWay}"
+                          Width="80"
+                          Height="25"
+                          VerticalAlignment="Center" />
+               </Grid>
                <Grid Width="50"
                      HorizontalAlignment="Right">
                   <Button Name="ButtonHelp"

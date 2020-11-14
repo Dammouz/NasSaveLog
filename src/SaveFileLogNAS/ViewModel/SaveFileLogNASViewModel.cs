@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using Common;
+using Common.Extensions;
 using GalaSoft.MvvmLight.Command;
 using SaveFileLogNAS.Business;
 using SaveFileLogNAS.Globalization;
@@ -52,12 +53,12 @@ namespace SaveFileLogNAS.ViewModel
         /// <summary>
         /// Log NAS.
         /// </summary>
-        public LogNas LogNas { get; private set; }
+        public ILogNas LogNas { get; private set; }
 
         /// <summary>
         /// For XAML.
         /// </summary>
-        public LogViewModel LogObjectViewModel { get; private set; }
+        public ILogViewModel LogObjectViewModel { get; private set; }
 
         /// <summary>
         /// Notify if errors.
@@ -74,6 +75,8 @@ namespace SaveFileLogNAS.ViewModel
             }
         }
         private bool _isError;
+
+        private string _previousLogNasPath;
 
         #endregion Properties
 
@@ -163,6 +166,7 @@ namespace SaveFileLogNAS.ViewModel
                 CommonText.LogMsg($"{Locale.ErrorCreatingFolder}{ComonTextConstants.NewLine}{ex.Message}");
                 path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             }
+
             return path;
         }
 
@@ -206,11 +210,40 @@ namespace SaveFileLogNAS.ViewModel
             if (MessageBox.Show($"{Locale.MessageBoxLogSavedOK}{ComonTextConstants.NewLine}{LogNas.FullPath}") == MessageBoxResult.OK)
             {
                 System.Threading.Thread.Sleep(WaitingTimeAfterSavingInMs);
+                _previousLogNasPath = LogNas.Path;
                 ClearLog();
             }
         }
 
         #endregion CommandSaveLog
+
+        #region CommandOpenLog
+
+        /// <summary>
+        /// Command to open log folder.
+        /// </summary>
+        public ICommand OpenLogCommand
+        {
+            get
+            {
+                _openLogCommand = new RelayCommand(OpenLog);
+                return _openLogCommand;
+            }
+        }
+        private ICommand _openLogCommand;
+
+        /// <summary>
+        /// Open log folder.
+        /// </summary>
+        public void OpenLog()
+        {
+            if (_previousLogNasPath.IsNotNullNorEmpty())
+            {
+                System.Diagnostics.Process.Start(_previousLogNasPath);
+            }
+        }
+
+        #endregion CommandOpenLog
 
         #region CommandDisplayHelp
 
