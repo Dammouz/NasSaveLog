@@ -18,10 +18,8 @@ namespace Common
         /// <returns>Logged message</returns>
         public static string LogMsg(string messageToLog)
         {
-            var nowUtc = DateTime.UtcNow;
-            Console.WriteLine($"{FormatDate(nowUtc, DateFormat.DateDebug)} : {messageToLog}"); // Debug
-
-            return $"{ComonTextConstants.NewLine}{FormatDate(nowUtc, DateFormat.DateDebug)} : {messageToLog}";
+            Console.WriteLine($"{FormatDate(DateTime.UtcNow, DateFormat.DateLog)} : {messageToLog}"); // Debug
+            return $"{ComonTextConstants.NewLine}{FormatDate(DateTime.UtcNow, DateFormat.DateLog)} : {messageToLog}";
         }
 
         #endregion Log
@@ -40,6 +38,9 @@ namespace Common
             {
                 case DateFormat.DateDebug:
                     return $"{date:yyyy-MM-dd HH:mm:ss.fffffff}";
+
+                case DateFormat.DateLog:
+                    return $"{date:yyyy-MM-dd HH:mm:ss.fff}";
 
                 case DateFormat.DateFile:
                     return $"{date:yyyyMMddHHmm}";

@@ -9,6 +9,7 @@ namespace Common
     {
         Undefined = -1,
         DateDebug,
+        DateLog,
         DateFile,
         DateLong,
         Date,
