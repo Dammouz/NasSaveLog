@@ -103,7 +103,7 @@ namespace Common
                 {
                     using (var sw = new StreamWriter(fs))
                     {
-                        sw.WriteLine(CommonText.FormatDate(DateTime.Now, DateFormat.DateDebug));
+                        sw.WriteLine(CommonText.FormatDate(DateTime.UtcNow, DateFormat.DateDebug));
                         sw.WriteLine(msg);
                         sw.WriteLine();
                     }

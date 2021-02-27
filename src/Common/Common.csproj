@@ -3,11 +3,7 @@
   <PropertyGroup>
     <RootNamespace>Common</RootNamespace>
     <AssemblyName>Common</AssemblyName>
-    <TargetFramework>net472</TargetFramework>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <OutDir>..\bin\$(Configuration)\</OutDir>
+    <TargetFrameworks>net5.0;net472</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
