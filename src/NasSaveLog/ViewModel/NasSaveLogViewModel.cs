@@ -36,7 +36,7 @@ namespace NasSaveLog.ViewModel
         /// <summary>
         /// Path to NAS log folder.
         /// </summary>
-        private static string NasFolder => ConfigurationManager.AppSettings["NasSaveLogFolder"];
+        private static string NasLogFolder => ConfigurationManager.AppSettings["NasSaveLogFolder"];
 
         /// <summary>
         /// Locale used for the GUI.
@@ -75,6 +75,7 @@ namespace NasSaveLog.ViewModel
         private bool _isError;
 
         private string _previousLogNasPath;
+        private const string _explorerExe = "explorer.exe";
 
         #endregion Properties
 
@@ -196,7 +197,7 @@ namespace NasSaveLog.ViewModel
             }
 
             LogNas.LogDateTime = DateTime.Now;
-            LogNas.Path = MakeValidPath(NasFolder);
+            LogNas.Path = MakeValidPath(NasLogFolder);
 
             // Save results in file
             if (CommonWriteStream.WriteFilePath(LogNas.Path, LogNas.FullLogName, LogNas.Content))
@@ -237,7 +238,7 @@ namespace NasSaveLog.ViewModel
             {
                 try
                 {
-                    System.Diagnostics.Process.Start(_previousLogNasPath);
+                    System.Diagnostics.Process.Start(_explorerExe, _previousLogNasPath);
                 }
                 catch (Exception exception)
                 {

@@ -1,4 +1,4 @@
-# SaveFileLogNAS
+# NasSaveLog
 LogFile saver for my NAS.
 Save the copied log in a specific folder.
 

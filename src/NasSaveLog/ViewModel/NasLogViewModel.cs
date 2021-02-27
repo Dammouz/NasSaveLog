@@ -3,7 +3,6 @@ using NasSaveLog.ViewModel.Events;
 namespace NasSaveLog.ViewModel
 {
     public class NasLogViewModel : PropertyEvent, INasLogViewModel
-
     {
         /// <summary>
         /// Log Content Text.

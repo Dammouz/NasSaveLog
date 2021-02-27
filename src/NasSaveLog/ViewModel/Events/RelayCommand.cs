@@ -3,44 +3,6 @@ using System.Windows.Input;
 
 namespace NasSaveLog.ViewModel.Events
 {
-    public class RelayCommand<T> : ICommand
-    {
-        private readonly Predicate<T> _canExecute;
-        private readonly Action<T> _execute;
-
-        public RelayCommand(Action<T> execute)
-           : this(execute, null)
-        {
-            _execute = execute;
-        }
-
-        public RelayCommand(Action<T> execute, Predicate<T> canExecute)
-        {
-            if (execute == null)
-            {
-                throw new ArgumentNullException("execute");
-            }
-            _execute = execute;
-            _canExecute = canExecute;
-        }
-
-        public bool CanExecute(object parameter)
-        {
-            return _canExecute == null || _canExecute((T)parameter);
-        }
-
-        public void Execute(object parameter)
-        {
-            _execute((T)parameter);
-        }
-
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
-        }
-    }
-
     public class RelayCommand : ICommand
     {
         private readonly Predicate<object> _canExecute;
@@ -49,16 +11,11 @@ namespace NasSaveLog.ViewModel.Events
         public RelayCommand(Action<object> execute)
            : this(execute, null)
         {
-            _execute = execute;
         }
 
         public RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
-            if (execute == null)
-            {
-                throw new ArgumentNullException("execute");
-            }
-            _execute = execute;
+            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
             _canExecute = canExecute;
         }
 
@@ -81,6 +38,7 @@ namespace NasSaveLog.ViewModel.Events
                 CommandManager.RequerySuggested += value;
                 CanExecuteChangedInternal += value;
             }
+
             remove
             {
                 CommandManager.RequerySuggested -= value;
