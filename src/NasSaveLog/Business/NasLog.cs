@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Common.Assemblies;
 using Common.Enums;
+using Common.Extensions;
 using Common.Text;
 
 namespace NasSaveLog.Business
@@ -34,7 +35,7 @@ namespace NasSaveLog.Business
         /// File name.
         /// </summary>
         public string LogExt { get; set; } = "log";
-        public string FullLogName => $"{AssemblyInfos.Instance.AppName}-{LogType}-{Date.FormatDate(LogDateTime, DateFormat.DateFile)}-{StringFixes.MakeValidFileNameFromInvalid(LogInfo)}.{LogExt}";
+        public string FullLogName => $"{AssemblyInfos.Instance.AppName}-{LogType}-{Date.FormatDate(LogDateTime, DateFormat.DateFile)}-{LogInfo.MakeValidFileNameFromInvalid()}.{LogExt}";
 
         /// <summary>
         /// Paths.

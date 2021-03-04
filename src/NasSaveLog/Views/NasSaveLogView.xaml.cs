@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using NasSaveLog.Common;
 using NasSaveLog.ViewModel;
 
 namespace NasSaveLog.Views
@@ -13,9 +12,9 @@ namespace NasSaveLog.Views
     {
         public NasSaveLogView()
         {
-            var nasSaveLogViewModel = new NasSaveLogViewModel();
+            var viewModel = new NasSaveLogViewModel();
             InitializeComponent();
-            DataContext = nasSaveLogViewModel;
+            DataContext = viewModel;
         }
 
         #region Behaviors
@@ -27,7 +26,7 @@ namespace NasSaveLog.Views
         /// <param name="e"></param>
         private void TextBoxLogContent_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (this.TextBoxLogContent.Text.Equals(AppConstants.InitialTextOnLogContent))
+            if (this.TextBoxLogContent.Text.Equals(NasSaveLogViewModel.Locale.InitialTextOnLogContent))
             {
                 this.TextBoxLogContent.Text = string.Empty;
             }
@@ -40,7 +39,7 @@ namespace NasSaveLog.Views
         /// <param name="e"></param>
         private void TextBoxInfoName_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (this.TextBoxInfoName.Text.Equals(AppConstants.InitialTextOnInfoName))
+            if (this.TextBoxInfoName.Text.Equals(NasSaveLogViewModel.Locale.InitialTextOnInfoName))
             {
                 this.TextBoxInfoName.Text = string.Empty;
             }

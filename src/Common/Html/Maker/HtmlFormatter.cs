@@ -20,9 +20,9 @@ namespace Common.Html.Maker
         /// </summary>
         /// <param name="msgOk">message OK</param>
         /// <returns></returns>
-        public static string MakeHtmlCheckOk(string msgOk)
+        public static string MakeHtmlCheckOk(string messageOk)
         {
-            return MakeHtmlCheckWithColor(HtmlColor.HtmlColorOk, msgOk);
+            return MakeHtmlCheckWithColor(HtmlColor.HtmlColorOk, messageOk);
         }
 
         /// <summary>
@@ -30,9 +30,9 @@ namespace Common.Html.Maker
         /// </summary>
         /// <param name="msgNok">message NOK</param>
         /// <returns></returns>
-        public static string MakeHtmlCheckNok(string msgNok)
+        public static string MakeHtmlCheckNok(string messageNok)
         {
-            return MakeHtmlCheckWithColor(HtmlColor.HtmlColorNok, msgNok);
+            return MakeHtmlCheckWithColor(HtmlColor.HtmlColorNok, messageNok);
         }
 
         /// <summary>

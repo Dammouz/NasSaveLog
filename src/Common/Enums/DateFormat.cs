@@ -5,12 +5,12 @@ namespace Common.Enums
     /// </summary>
     public enum DateFormat
     {
-        Undefined = -1,
+        Undefined = 0,
         DateDebug,
         DateLog,
         DateFile,
         DateHuman,
         DateLong,
-        Date,
+        Date
     }
 }

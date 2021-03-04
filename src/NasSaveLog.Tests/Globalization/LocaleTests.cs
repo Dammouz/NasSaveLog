@@ -1,5 +1,5 @@
-using NUnit.Framework;
 using NasSaveLog.Globalization;
+using NUnit.Framework;
 
 namespace NasSaveLog.Tests.Globalization
 {

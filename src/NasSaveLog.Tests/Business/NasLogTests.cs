@@ -1,5 +1,5 @@
-using NUnit.Framework;
 using NasSaveLog.Business;
+using NUnit.Framework;
 
 namespace NasSaveLog.Tests.Business
 {

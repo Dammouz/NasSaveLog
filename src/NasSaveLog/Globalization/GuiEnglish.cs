@@ -7,7 +7,7 @@ namespace NasSaveLog.Globalization
         #region Initial values
 
         public string InitialTextOnLogContent { get; } = "Copy logs here...";
-        public string InitialTextOnInfoName { get; } = "Write informations about name here...";
+        public string InitialTextOnInfoName { get; } = "Write informations about log name here...";
 
         #endregion Initial values
 

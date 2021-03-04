@@ -1,5 +1,5 @@
-using NUnit.Framework;
 using NasSaveLog.ViewModel;
+using NUnit.Framework;
 
 namespace NasSaveLog.Tests.ViewModel
 {

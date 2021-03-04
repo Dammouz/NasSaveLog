@@ -11,5 +11,18 @@ namespace Common.Extensions
         {
             return stringToCheck != null && stringToCheck.Length > 0;
         }
+
+        /// <summary>
+        /// Trim the end of a string.
+        /// </summary>
+        /// <param name="input">string to trim</param>
+        /// <param name="suffixToRemove">suffix to remove</param>
+        /// <returns>trimed string</returns>
+        public static string StringTrimEnd(this string input, string suffixToRemove)
+        {
+            return (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(suffixToRemove) || !input.EndsWith(suffixToRemove))
+                     ? input
+                     : input.Substring(0, input.Length - suffixToRemove.Length);
+        }
     }
 }

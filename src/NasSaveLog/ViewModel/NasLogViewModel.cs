@@ -16,7 +16,7 @@ namespace NasSaveLog.ViewModel
                 OnPropertyChange();
             }
         }
-        private string _logContentText = string.Empty;
+        private string _logContentText;
 
         /// <summary>
         /// Info Name Text.
@@ -30,7 +30,7 @@ namespace NasSaveLog.ViewModel
                 OnPropertyChange();
             }
         }
-        private string _infoNameText = string.Empty;
+        private string _infoNameText;
 
         /// <summary>
         /// Is Error.

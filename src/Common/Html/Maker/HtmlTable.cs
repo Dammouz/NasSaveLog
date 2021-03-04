@@ -14,7 +14,7 @@ namespace Common.Html.Maker
         /// <param name="tableHeader">name of the columns</param>
         /// <param name="tableContent">list of the content cells</param>
         /// <returns></returns>
-        public static StringBuilder MakeHtmlTable(string tableId, string tableCaption, string[] tableHeader, IEnumerable<string[]> tableContent)
+        public static string MakeHtmlTable(string tableId, string tableCaption, string[] tableHeader, IEnumerable<string[]> tableContent)
         {
             tableId += "Table";
             var table = new StringBuilder(MakeHtmlTableStyle(tableId));
@@ -24,7 +24,7 @@ namespace Common.Html.Maker
             table.Append(MakeHtmlTableBody(tableContent));
             table.Append(MakeHtmlTableEnd());
 
-            return table;
+            return table.ToString();
         }
 
         /// <summary>
