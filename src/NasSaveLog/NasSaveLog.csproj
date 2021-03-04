@@ -21,4 +21,9 @@
     <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="NasSaveLog.Tests" />
+  </ItemGroup>
+
+
 </Project>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 using Common.Assemblies;
@@ -28,7 +29,7 @@ namespace NasSaveLog.ViewModel
             Locale = LocaleHelper.MakeLocales(ConfigurationManager.AppSettings["Locale"]);
 
             _previousLogNasPath = ConfigurationManager.AppSettings["NasSaveLogFolder"];
-            LogNas = new NasLog();
+            LogNas = new NasLog(_appName);
             LogObjectViewModel = new NasLogViewModel();
         }
 
@@ -78,6 +79,7 @@ namespace NasSaveLog.ViewModel
         private bool _isError;
 
         private string _previousLogNasPath;
+        private readonly string _appName = AssemblyInfos.GetAssemblyName(Assembly.GetExecutingAssembly());
         private const string _explorerExe = "explorer.exe";
 
         #endregion Properties
@@ -279,7 +281,7 @@ namespace NasSaveLog.ViewModel
         /// </summary>
         public void ClearLog()
         {
-            LogNas = new NasLog();
+            LogNas = new NasLog(_appName);
             LogObjectViewModel.LogContentText = string.Empty;
             LogObjectViewModel.InfoNameText = string.Empty;
             IsError = false;

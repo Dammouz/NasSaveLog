@@ -4,7 +4,7 @@ using Common.Extensions;
 
 namespace NasSaveLog.Globalization
 {
-    public static class LocaleHelper
+    internal static class LocaleHelper
     {
         /// <summary>
         /// Make language depending on string.

@@ -38,5 +38,10 @@ namespace Common.Assemblies
         {
             return File.GetLastWriteTime((assembly ?? Assembly.GetExecutingAssembly()).Location);
         }
+
+        public static string GetAssemblyName(Assembly assembly)
+        {
+            return (assembly ?? Assembly.GetExecutingAssembly()).GetName().Name;
+        }
     }
 }

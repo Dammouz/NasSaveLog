@@ -10,7 +10,7 @@ namespace NasSaveLog.Tests.Business
         public void GivenANasLog_WhenSettingAnError_ThenShouldReturnTheTypeRelativeToTheError()
         {
             // Arrange & Act
-            var logNas = new NasLog()
+            var logNas = new NasLog(null)
             {
                 IsError = true
             };
@@ -23,7 +23,7 @@ namespace NasSaveLog.Tests.Business
         public void GivenANasLog_WhenSettingALog_ThenShouldReturnTheTypeRelativeToTheLog()
         {
             // Arrange & Act
-            var logNas = new NasLog()
+            var logNas = new NasLog(null)
             {
                 IsError = false
             };

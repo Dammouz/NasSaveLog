@@ -2,7 +2,7 @@ using Common.Constants;
 
 namespace NasSaveLog.Globalization
 {
-    public class GuiFrench : IGui
+    internal class GuiFrench : IGui
     {
         #region Initial values
 

@@ -1,14 +1,20 @@
 using System;
 using System.Collections.Generic;
-using Common.Assemblies;
 using Common.Enums;
 using Common.Extensions;
 using Common.Text;
 
 namespace NasSaveLog.Business
 {
-    public class NasLog : INasLog
+    internal class NasLog : INasLog
     {
+        internal NasLog(string appName)
+        {
+            _appName = appName;
+        }
+
+        private readonly string _appName;
+
         /// <summary>
         /// Content.
         /// </summary>
@@ -35,7 +41,7 @@ namespace NasSaveLog.Business
         /// File name.
         /// </summary>
         public string LogExt { get; set; } = "log";
-        public string FullLogName => $"{AssemblyInfos.Instance.AppName}-{LogType}-{Date.FormatDate(LogDateTime, DateFormat.DateFile)}-{LogInfo.MakeValidFileNameFromInvalid()}.{LogExt}";
+        public string FullLogName => $"{_appName}-{LogType}-{Date.FormatDate(LogDateTime, DateFormat.DateFile)}-{LogInfo.MakeValidFileNameFromInvalid()}.{LogExt}";
 
         /// <summary>
         /// Paths.
