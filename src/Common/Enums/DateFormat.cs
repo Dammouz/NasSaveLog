@@ -1,7 +1,5 @@
-namespace Common
+namespace Common.Enums
 {
-    #region DateFormat
-
     /// <summary>
     /// Enum to get several date format.
     /// </summary>
@@ -11,9 +9,8 @@ namespace Common
         DateDebug,
         DateLog,
         DateFile,
+        DateHuman,
         DateLong,
         Date,
     }
-
-    #endregion DateFormat
 }

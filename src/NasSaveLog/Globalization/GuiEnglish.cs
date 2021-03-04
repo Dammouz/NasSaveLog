@@ -1,4 +1,4 @@
-using Common;
+using Common.Constants;
 
 namespace NasSaveLog.Globalization
 {
@@ -44,11 +44,11 @@ namespace NasSaveLog.Globalization
         #region Help message box
 
         public string MessageBoxHelpCaption { get; } = "Help";
-        public string MessageBoxHelpHelp { get; } = $"HELP !{ComonTextConstants.NewLine}{ComonTextConstants.NewLine}"
+        public string MessageBoxHelpHelp { get; } = $"HELP !{TextConstants.NewLine}{TextConstants.NewLine}"
                                                   + $"Copy log files content from Open Media Vault "
                                                   + $"in the main text box. Then click on \"Save\" to save"
                                                   + $"the file in the log folder. If this one doesn't exist, "
-                                                  + $"the log file will be save on the Desktop.{ComonTextConstants.NewLine}"
+                                                  + $"the log file will be save on the Desktop.{TextConstants.NewLine}"
                                                   + $"Add subsidiary informations in the second field.";
         public string MessageBoxHelpAbout { get; } = "ABOUT :";
         public string MessageBoxHelpBuild { get; } = "Build :   ";

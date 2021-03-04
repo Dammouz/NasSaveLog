@@ -1,11 +1,9 @@
 using System;
 
-namespace Common
+namespace Common.Constants
 {
-    public static class ComonTextConstants
+    public static class TextConstants
     {
-        #region ConstString
-
         // Several new line
         public static readonly string NewLine = Environment.NewLine;
         public static readonly string NewLineHtml = "<br/>";
@@ -15,7 +13,5 @@ namespace Common
 
         // Regex pattern
         public static readonly string RegexValidPath = @"^[\w\-. ]+$";
-
-        #endregion ConstString
     }
 }

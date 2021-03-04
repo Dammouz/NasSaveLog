@@ -1,10 +1,12 @@
 <Project>
 
   <PropertyGroup>
-    <Version>0.1.0.0</Version>
-    <Authors>Dammouz</Authors>
+    <Id>NasSaveLog</Id>
+    <Version>0.2.0.0</Version>
     <Company>Dammouz</Company>
-    <Copyright>Copyright Dammouz © 2015 - $([System.DateTime]::Now.Year)</Copyright>
+    <Authors>$(Company)</Authors>
+    <Copyright>Copyright $(Company) © 2015 - $([System.DateTime]::Now.Year)</Copyright>
+    <Description>LogFile saver for my NAS. Save the copied log in a specific folder.</Description>
   </PropertyGroup>
 
   <!--

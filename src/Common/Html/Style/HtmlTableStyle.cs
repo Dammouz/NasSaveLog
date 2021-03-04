@@ -1,20 +1,7 @@
-namespace Common
+﻿namespace Common.Html.Style
 {
-    /// <summary>
-    /// Static class CommonHtmlStyle.
-    /// Common HTML CSS style.
-    /// </summary>
-    public static class CommonHtmlStyle
+    public static class HtmlTableStyle
     {
-        #region HTML color string
-
-        public static readonly string HtmlColorOk = "green";
-        public static readonly string HtmlColorNok = "red";
-
-        #endregion HTML color string
-
-        #region HTML table style
-
         public static readonly string TableCssStyle = " font-family: Arial, Helvetica, sans-serif;"
                                                   + " width: 100%;"
                                                   + " border-collapse: collapse;"
@@ -36,7 +23,5 @@ namespace Common
         public static readonly string TableCssCell = " background-color: #FFF;"
                                                    + " color: #000;";
         public static readonly string TableCssCellAlt = " background-color: #EAF2D3;";
-
-        #endregion HTML table style
     }
 }

@@ -4,10 +4,13 @@ using System.Configuration;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
-using Common;
+using Common.Assemblies;
+using Common.Constants;
+using Common.Enums;
 using Common.Extensions;
+using Common.Text;
+using Common.WriteStream;
 using NasSaveLog.Business;
-using NasSaveLog.Common;
 using NasSaveLog.Globalization;
 using NasSaveLog.ViewModel.Events;
 
@@ -19,7 +22,7 @@ namespace NasSaveLog.ViewModel
 
         public NasSaveLogViewModel()
         {
-            int.TryParse(ConfigurationManager.AppSettings["WaitingTimeAfterSavingInMs"], out var waitingTimeAfterSaving);
+            _ = int.TryParse(ConfigurationManager.AppSettings["WaitingTimeAfterSavingInMs"], out var waitingTimeAfterSaving);
             WaitingTimeAfterSavingInMs = waitingTimeAfterSaving;
 
             Locale = LocaleHelper.MakeLocales(ConfigurationManager.AppSettings["Locale"]);
@@ -162,7 +165,7 @@ namespace NasSaveLog.ViewModel
             }
             catch (Exception ex)
             {
-                CommonText.LogMsg($"{Locale.ErrorCreatingFolder}{ComonTextConstants.NewLine}{ex.Message}");
+                Log.LogMessage($"{Locale.ErrorCreatingFolder}{TextConstants.NewLine}{ex.Message}");
                 path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             }
 
@@ -176,15 +179,7 @@ namespace NasSaveLog.ViewModel
         /// <summary>
         /// Command to save log.
         /// </summary>
-        public ICommand SaveLogCommand
-        {
-            get
-            {
-                _saveLogCommand = new RelayCommand(x => SaveLog());
-                return _saveLogCommand;
-            }
-        }
-        private ICommand _saveLogCommand;
+        public ICommand SaveLogCommand => new RelayCommand(x => SaveLog());
 
         /// <summary>
         /// Save log.
@@ -200,10 +195,10 @@ namespace NasSaveLog.ViewModel
             LogNas.Path = MakeValidPath(NasLogFolder);
 
             // Save results in file
-            if (CommonWriteStream.WriteFilePath(LogNas.Path, LogNas.FullLogName, LogNas.Content))
+            if (WriteIntoFile.WriteFilePath(LogNas.Path, LogNas.FullLogName, LogNas.Content))
             {
                 // Clear interface after saving
-                if (MessageBox.Show($"{Locale.MessageBoxLogSavedOK}{ComonTextConstants.NewLine}{LogNas.FullPath}") == MessageBoxResult.OK)
+                if (MessageBox.Show($"{Locale.MessageBoxLogSavedOK}{TextConstants.NewLine}{LogNas.FullPath}") == MessageBoxResult.OK)
                 {
                     System.Threading.Thread.Sleep(WaitingTimeAfterSavingInMs);
                     _previousLogNasPath = LogNas.Path;
@@ -219,15 +214,7 @@ namespace NasSaveLog.ViewModel
         /// <summary>
         /// Command to open log folder.
         /// </summary>
-        public ICommand OpenLogCommand
-        {
-            get
-            {
-                _openLogCommand = new RelayCommand(x => OpenLog());
-                return _openLogCommand;
-            }
-        }
-        private ICommand _openLogCommand;
+        public ICommand OpenLogCommand => new RelayCommand(x => OpenLog());
 
         /// <summary>
         /// Open log folder.
@@ -242,7 +229,7 @@ namespace NasSaveLog.ViewModel
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show($"{exception.Message}{ComonTextConstants.NewLine}Path: '{_previousLogNasPath}'", "An error occurs", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"{exception.Message}{TextConstants.NewLine}Path: '{_previousLogNasPath}'", "An error occurs", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -254,15 +241,7 @@ namespace NasSaveLog.ViewModel
         /// <summary>
         /// Command to display help.
         /// </summary>
-        public ICommand DisplayHelpCommand
-        {
-            get
-            {
-                _displayHelpCommand = new RelayCommand(x => DisplayHelp());
-                return _displayHelpCommand;
-            }
-        }
-        private ICommand _displayHelpCommand;
+        public static ICommand DisplayHelpCommand => new RelayCommand(x => DisplayHelp());
 
         /// <summary>
         /// Display help.
@@ -273,13 +252,13 @@ namespace NasSaveLog.ViewModel
             var helpMessage = $"{Locale.MessageBoxHelpHelp}";
 
             // About:
-            var aboutMessage = $"{Locale.MessageBoxHelpAbout}{ComonTextConstants.NewLine}{ComonTextConstants.NewLine}"
-                + $"{CommonConstants.SoftCompanyName} - {CommonConstants.SoftName}{ComonTextConstants.NewLine}"
-                + $"{Locale.MessageBoxHelpBuild}{CommonConstants.SoftDate}{ComonTextConstants.NewLine}"
-                + $"{Locale.MessageBoxHelpVersion}{CommonConstants.SoftVersion}{ComonTextConstants.NewLine}";
+            var aboutMessage = $"{Locale.MessageBoxHelpAbout}{TextConstants.NewLine}{TextConstants.NewLine}"
+                + $"{AssemblyInfos.Instance.AppCompanyName} - {AssemblyInfos.Instance.AppName}{TextConstants.NewLine}"
+                + $"{Locale.MessageBoxHelpBuild}{Date.FormatDate(AssemblyInfos.Instance.AppDateTime, DateFormat.DateHuman)}{TextConstants.NewLine}"
+                + $"{Locale.MessageBoxHelpVersion}{AssemblyInfos.Instance.AppVersion}{TextConstants.NewLine}";
 
             // Fill MessageBox parameters
-            var messageBoxContent = $"{helpMessage}{ComonTextConstants.NewLine}{ComonTextConstants.NewLine}{ComonTextConstants.NewLine}{aboutMessage}";
+            var messageBoxContent = $"{helpMessage}{TextConstants.NewLine}{TextConstants.NewLine}{TextConstants.NewLine}{aboutMessage}";
             var messageBoxCaption = Locale.MessageBoxHelpCaption;
 
             MessageBox.Show(messageBoxContent, messageBoxCaption, MessageBoxButton.OK, MessageBoxImage.Question);
@@ -292,15 +271,7 @@ namespace NasSaveLog.ViewModel
         /// <summary>
         /// Command to clear log.
         /// </summary>
-        public ICommand ClearLogCommand
-        {
-            get
-            {
-                _clearLogCommand = new RelayCommand(x => ClearLog());
-                return _clearLogCommand;
-            }
-        }
-        private ICommand _clearLogCommand;
+        public ICommand ClearLogCommand => new RelayCommand(x => ClearLog());
 
         /// <summary>
         /// Clear log.

@@ -1,3 +1,5 @@
+using Common.DebugTools;
+
 namespace Common.Extensions
 {
     public static class GenericExtensions
@@ -6,22 +8,22 @@ namespace Common.Extensions
         /// Extension do dump any object, only public properties.
         /// </summary>
         /// <typeparam name="T">any type</typeparam>
-        /// <param name="obj">object to dump</param>
+        /// <param name="objectToDump">object to dump</param>
         /// <returns></returns>
-        public static string Dump<T>(this T obj)
+        public static string Dump<T>(this T objectToDump)
         {
-            return CommonDebugTools.VarDumpJson(obj);
+            return VarDump.VarDumpJson(objectToDump);
         }
 
         /// <summary>
         /// Extension do dump any object, only public properties, unforamtted.
         /// </summary>
         /// <typeparam name="T">any type</typeparam>
-        /// <param name="obj">object to dump</param>
+        /// <param name="objectToDump">object to dump</param>
         /// <returns></returns>
-        public static string DumpUnFormatted<T>(this T obj)
+        public static string DumpUnFormatted<T>(this T objectToDump)
         {
-            return CommonDebugTools.VarDumpJsonUnFormatted(obj);
+            return VarDump.VarDumpJsonUnFormatted(objectToDump);
         }
     }
 }
