@@ -1,20 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>NasSaveLog</RootNamespace>
+
     <AssemblyName>NasSaveLog</AssemblyName>
     <OutputType>WinExe</OutputType>
-    <TargetFrameworks>net5.0-windows</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows;net5.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
     <AppConfig>App.config</AppConfig>
     <ApplicationIcon>res\img\NasSaveLog.ico</ApplicationIcon>
 
     <DebugType>Embedded</DebugType>
 
-  </PropertyGroup>
+    <OutDir>..\bin\$(Configuration)\$(TargetFramework)\$(AssemblyName)\</OutDir>
 
-  <PropertyGroup>
-    <OutDir>..\bin\$(Configuration)\$(TargetFramework)\</OutDir>
   </PropertyGroup>
 
   <ItemGroup>

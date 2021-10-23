@@ -1,13 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>Common.Tests</RootNamespace>
-    <AssemblyName>Common.Tests</AssemblyName>
-    <TargetFrameworks>net5.0;net472</TargetFrameworks>
-  </PropertyGroup>
 
-  <PropertyGroup>
-    <OutDir>..\bin\$(Configuration)\Tests\$(TargetFramework)\</OutDir>
+    <AssemblyName>Common.Tests</AssemblyName>
+    <TargetFrameworks>net6.0;net5.0;net472</TargetFrameworks>
+
+    <OutDir>..\bin\$(Configuration)\$(TargetFramework)\Tests\</OutDir>
+
   </PropertyGroup>
 
   <ItemGroup>

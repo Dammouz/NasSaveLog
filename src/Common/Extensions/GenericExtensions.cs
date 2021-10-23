@@ -23,7 +23,7 @@ namespace Common.Extensions
         /// <returns></returns>
         public static string DumpUnFormatted<T>(this T objectToDump)
         {
-            return VarDump.VarDumpJsonUnFormatted(objectToDump);
+            return VarDump.VarDumpJsonUnformatted(objectToDump);
         }
     }
 }

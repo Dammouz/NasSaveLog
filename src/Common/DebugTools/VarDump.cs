@@ -26,16 +26,6 @@ namespace Common.DebugTools
         }
 
         /// <summary>
-        /// Equivalent of var_dump in PHP, permit to display all propertes of an object, into JSON without line break.
-        /// </summary>
-        /// <param name="objectToDump">object to dump</param>
-        /// <returns></returns>
-        public static string VarDumpJsonUnFormatted(object objectToDump)
-        {
-            return VarDumpJson(objectToDump, Formatting.None);
-        }
-
-        /// <summary>
         /// Equivalent of var_dump in PHP, permit to display all propertes of an object, into JSON format.
         /// </summary>
         /// <param name="objectToDump">object to dump</param>
@@ -44,6 +34,16 @@ namespace Common.DebugTools
         public static string VarDumpJson(object objectToDump, Formatting format)
         {
             return JsonConvert.SerializeObject(objectToDump, format);
+        }
+
+        /// <summary>
+        /// Equivalent of var_dump in PHP, permit to display all propertes of an object, into JSON without line break.
+        /// </summary>
+        /// <param name="objectToDump">object to dump</param>
+        /// <returns></returns>
+        public static string VarDumpJsonUnformatted(object objectToDump)
+        {
+            return VarDumpJson(objectToDump, Formatting.None);
         }
     }
 }

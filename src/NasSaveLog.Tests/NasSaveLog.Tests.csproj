@@ -1,13 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <RootNamespace>NasSaveLog.Tests</RootNamespace>
-    <AssemblyName>NasSaveLog.Tests</AssemblyName>
-    <TargetFrameworks>net5.0-windows</TargetFrameworks>
-  </PropertyGroup>
 
-  <PropertyGroup>
-    <OutDir>..\bin\$(Configuration)\Tests\$(TargetFramework)\</OutDir>
+    <AssemblyName>NasSaveLog.Tests</AssemblyName>
+    <TargetFrameworks>net6.0-windows;net5.0-windows</TargetFrameworks>
+
+    <OutDir>..\bin\$(Configuration)\$(TargetFramework)\Tests\</OutDir>
+
   </PropertyGroup>
 
   <ItemGroup>

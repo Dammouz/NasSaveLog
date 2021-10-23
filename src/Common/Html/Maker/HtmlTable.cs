@@ -22,7 +22,7 @@ namespace Common.Html.Maker
             table.Append(MakeHtmlTableCaption(tableCaption));
             table.Append(MakeHtmlTableHeader(tableHeader));
             table.Append(MakeHtmlTableBody(tableContent));
-            table.Append(MakeHtmlTableEnd());
+            table.Append(MakeHtmlTableEnd);
 
             return table.ToString();
         }
@@ -87,31 +87,27 @@ namespace Common.Html.Maker
         public static string MakeHtmlTableBody(IEnumerable<string[]> tableContent)
         {
             var isRowAlt = false;
-            var resultContent = new StringBuilder("<tbody>");
+            var tableBodyContent = new StringBuilder("<tbody>");
 
             foreach (var rowOfCells in tableContent)
             {
-                resultContent.Append($"<tr{(isRowAlt ? " class=\"alt\"" : string.Empty)}>");
+                tableBodyContent.Append($"<tr{(isRowAlt ? " class=\"alt\"" : string.Empty)}>");
 
                 foreach (var cell in rowOfCells)
                 {
-                    resultContent.Append($"<td>{cell}</td>");
+                    tableBodyContent.Append($"<td>{cell}</td>");
                 }
 
-                resultContent.Append("</tr>");
+                tableBodyContent.Append("</tr>");
                 isRowAlt = !isRowAlt;
             }
 
-            return resultContent.Append("</tbody>").ToString();
+            return tableBodyContent.Append("</tbody>").ToString();
         }
 
         /// <summary>
         /// Close the table.
         /// </summary>
-        /// <returns></returns>
-        public static string MakeHtmlTableEnd()
-        {
-            return "</table>";
-        }
+        public static readonly string MakeHtmlTableEnd = "</table>";
     }
 }
