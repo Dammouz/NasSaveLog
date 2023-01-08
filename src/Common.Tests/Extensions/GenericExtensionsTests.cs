@@ -71,6 +71,7 @@ namespace Common.Tests.Extensions
   ""LogExt"": ""ext"",
   ""Path"": ""C:\\titi\\tata""
 }";
+
             // Act
             var result = moreComplexObject.Dump();
 
@@ -96,8 +97,8 @@ namespace Common.Tests.Extensions
                 LogExt = "ext",
                 Path = "C:\\titi\\tata"
             };
-            //var expectedResult = "{{\"Content\":\"content of log nas\",\"Contents\":[\"content\",\"of log nas\"],\"LogDateTime\":\"2018-01-01T21:59:59.123Z\",\"LogInfo\":\"MoreInfosToGive\",\"IsError\":true,\"LogType\":\"error\",\"LogExt\":\"ext\",\"FullLogName\":\"{softName}-error-201801012159-MoreInfosToGive.ext\",\"Path\":\"C:\\\\titi\\\\tata\",\"FullPath\":\"C:\\\\titi\\\\tata\\\\{softName}-error-201801012159-MoreInfosToGive.ext\"}}";
             var expectedResult = @"{""Content"":""content of log nas"",""Contents"":[""content"",""of log nas""],""LogDateTime"":""2018-01-01T21:59:59.123Z"",""LogInfo"":""MoreInfosToGive"",""IsError"":true,""LogExt"":""ext"",""Path"":""C:\\titi\\tata""}";
+
             // Act
             var result = logNas.DumpUnFormatted();
 

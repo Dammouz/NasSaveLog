@@ -7,11 +7,9 @@ namespace Common.Assemblies
 {
     public sealed class AssemblyInfos
     {
-        private readonly Assembly _assembly;
-        private readonly AssemblyName _assemblyName;
         private static readonly Lazy<AssemblyInfos> s_lazy = new Lazy<AssemblyInfos>(() => new AssemblyInfos(null));
-
         public static AssemblyInfos Instance => s_lazy.Value;
+
         public readonly string AppCompanyName;
         public readonly string AppAuthor;
         public readonly string AppVersion;
@@ -20,12 +18,12 @@ namespace Common.Assemblies
 
         private AssemblyInfos(Assembly assembly)
         {
-            _assembly = assembly ?? Assembly.GetExecutingAssembly();
-            _assemblyName = _assembly.GetName();
-            AppVersion = _assemblyName.Version.ToString();
-            AppName = _assemblyName.Name;
-            AppDateTime = GetAssemblyDate(_assembly);
-            AppCompanyName = _assembly.GetCustomAttributes<AssemblyCompanyAttribute>()?.First()?.Company;
+            var innerAassembly = assembly ?? Assembly.GetExecutingAssembly();
+            var innerAssemblyName = innerAassembly.GetName();
+            AppVersion = innerAssemblyName.Version.ToString();
+            AppName = innerAssemblyName.Name;
+            AppDateTime = GetAssemblyDate(innerAassembly);
+            AppCompanyName = innerAassembly.GetCustomAttributes<AssemblyCompanyAttribute>()?.First()?.Company;
             AppAuthor = AppCompanyName;
         }
 

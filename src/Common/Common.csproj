@@ -3,7 +3,7 @@
   <PropertyGroup>
 
     <AssemblyName>Common</AssemblyName>
-    <TargetFrameworks>net6.0;net5.0;net472</TargetFrameworks>
+    <TargetFrameworks>net6.0;net472</TargetFrameworks>
 
     <DebugType>Embedded</DebugType>
 

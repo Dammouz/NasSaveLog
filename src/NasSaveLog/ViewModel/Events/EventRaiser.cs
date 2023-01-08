@@ -14,7 +14,8 @@ namespace NasSaveLog.ViewModel.Events
             handler?.Invoke(sender, new EventArgs<T>(value));
         }
 
-        public static void Raise<T>(this EventHandler<T> handler, object sender, T value) where T : EventArgs
+        public static void Raise<T>(this EventHandler<T> handler, object sender, T value)
+            where T : EventArgs
         {
             handler?.Invoke(sender, value);
         }

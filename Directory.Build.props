@@ -9,10 +9,4 @@
     <Description>LogFile saver for my NAS. Save the copied log in a specific folder.</Description>
   </PropertyGroup>
 
-  <!--
-  <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
-  </PropertyGroup>
-  -->
-
 </Project>

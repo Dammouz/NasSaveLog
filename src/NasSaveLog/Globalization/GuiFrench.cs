@@ -2,70 +2,66 @@ using Common.Constants;
 
 namespace NasSaveLog.Globalization
 {
-    internal class GuiFrench : IGui
+    internal class GuiFrench : GuiEnglish
     {
         #region Initial values
 
-        public string InitialTextOnLogContent { get; } = "Copier les logs ici ...";
-        public string InitialTextOnInfoName { get; } = "Écrire les informations de nom du log ici ...";
+        public override string InitialTextOnLogContent { get; } = "Copier les logs ici ...";
+        public override string InitialTextOnInfoName { get; } = "Écrire les informations de nom du log ici ...";
 
         #endregion Initial values
 
         #region Controls
 
-        public string AppTitle { get; } = "NAS Save Log";
-        public string CheckBoxIsError { get; } = "Erreur ?";
-        public string ButtonSave { get; } = "Enregistrer";
-        public string ButtonOpen { get; } = "Ouvrir";
-        public string ButtonHelp { get; } = "?";
-        public string ButtonClear { get; } = "X";
+        public override string CheckBoxIsError { get; } = "Erreur ?";
+        public override string ButtonSave { get; } = "Enregistrer";
+        public override string ButtonOpen { get; } = "Ouvrir";
 
         #endregion Controls
 
         #region Tooltips
 
-        public string AppToolTip { get; } = "NAS Save Log";
-        public string TextBoxLogContentToolTip { get; } = "Copier les logs ici ...";
-        public string TextBoxInfoNameToolTip { get; } = "Écrire les informations de nom ici ...";
-        public string CheckBoxIsErrorToolTip { get; } = "Erreur ?";
-        public string ButtonSaveToolTip { get; } = "Enregistrer";
-        public string ButtonOpenToolTip { get; } = "Ouvrir";
-        public string ButtonHelpToolTip { get; } = "Aide ?";
-        public string ButtonClearToolTip { get; } = "RAZ";
+        public override string AppToolTip { get; } = "NAS Save Log";
+        public override string TextBoxLogContentToolTip { get; } = "Copier les logs ici ...";
+        public override string TextBoxInfoNameToolTip { get; } = "Écrire les informations de nom ici ...";
+        public override string CheckBoxIsErrorToolTip { get; } = "Erreur ?";
+        public override string ButtonSaveToolTip { get; } = "Enregistrer";
+        public override string ButtonOpenToolTip { get; } = "Ouvrir";
+        public override string ButtonHelpToolTip { get; } = "Aide ?";
+        public override string ButtonClearToolTip { get; } = "RAZ";
 
         #endregion Tooltips
 
         #region Saving
 
-        public string MessageBoxLogSavedOK { get; } = "Sauvegarde effectuée. Fichier de log :";
+        public override string MessageBoxLogSavedOK { get; } = "Sauvegarde effectuée. Fichier de log :";
 
         #endregion Saving
 
         #region Help message box
 
-        public string MessageBoxHelpCaption { get; } = "Aide";
-        public string MessageBoxHelpHelp { get; } = $"HELP !{TextConstants.NewLine}{TextConstants.NewLine}"
+        public override string MessageBoxHelpCaption { get; } = "Aide";
+        public override string MessageBoxHelpHelp { get; } = $"HELP !{TextConstants.NewLine}{TextConstants.NewLine}"
                                                   + $"Copier les fichiers de log d'Open Media Vault "
                                                   + $"dans le champ de texte. Puis cliquer sur \"Enregistrer\" pour enregistrer"
                                                   + $"le fichier dans le dossier de log. Si celui-ci est inexistant, "
                                                   + $"le fichier sera enregistré sur le bureau.{TextConstants.NewLine}"
                                                   + $"Ajouter un complément de nom dans le champ d'informations.";
-        public string MessageBoxHelpAbout { get; } = "À PROPOS :";
-        public string MessageBoxHelpBuild { get; } = "Compilation :   ";
-        public string MessageBoxHelpVersion { get; } = "Version :   ";
+        public override string MessageBoxHelpAbout { get; } = "À PROPOS :";
+        public override string MessageBoxHelpBuild { get; } = "Compilation :   ";
 
         #endregion Help message box
 
         #region Field error messages
 
-        public string ErrorOnFieldLogContent { get; } = "Copier le log dans le champ.";
-        public string ErrorOnFieldInfoName { get; } = "Écrire les informations de nom.";
+        public override string ErrorOnFieldLogContent { get; } = "Copier le log dans le champ.";
+        public override string ErrorOnFieldInfoName { get; } = "Écrire les informations de nom.";
 
         #endregion Field error messages
 
         #region Error on folder path
 
-        public string ErrorCreatingFolder { get; } = "Erreur lors de la création du dossier de sauvegarde.";
+        public override string ErrorCreatingFolder { get; } = "Erreur lors de la création du dossier de sauvegarde.";
 
         #endregion Error on folder path
     }

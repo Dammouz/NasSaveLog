@@ -163,7 +163,7 @@ namespace NasSaveLog.ViewModel
 
             try
             {
-                var di = Directory.CreateDirectory(path);
+                _ = Directory.CreateDirectory(path);
             }
             catch (Exception ex)
             {
@@ -197,15 +197,12 @@ namespace NasSaveLog.ViewModel
             LogNas.Path = MakeValidPath(NasLogFolder);
 
             // Save results in file
-            if (WriteIntoFile.WriteFilePath(LogNas.Path, LogNas.FullLogName, LogNas.Content))
+            if (WriteIntoFile.WriteFilePath(LogNas.Path, LogNas.FullLogName, LogNas.Content)
+                && MessageBox.Show($"{Locale.MessageBoxLogSavedOK}{TextConstants.NewLine}{LogNas.FullPath}") == MessageBoxResult.OK)
             {
-                // Clear interface after saving
-                if (MessageBox.Show($"{Locale.MessageBoxLogSavedOK}{TextConstants.NewLine}{LogNas.FullPath}") == MessageBoxResult.OK)
-                {
-                    System.Threading.Thread.Sleep(WaitingTimeAfterSavingInMs);
-                    _previousLogNasPath = LogNas.Path;
-                    ClearLog();
-                }
+                System.Threading.Thread.Sleep(WaitingTimeAfterSavingInMs);
+                _previousLogNasPath = LogNas.Path;
+                ClearLog();
             }
         }
 
@@ -251,16 +248,22 @@ namespace NasSaveLog.ViewModel
         public static void DisplayHelp()
         {
             // Help:
-            var helpMessage = $"{Locale.MessageBoxHelpHelp}";
+            var helpMessage = Locale.MessageBoxHelpHelp;
 
             // About:
-            var aboutMessage = $"{Locale.MessageBoxHelpAbout}{TextConstants.NewLine}{TextConstants.NewLine}"
-                + $"{AssemblyInfos.Instance.AppCompanyName} - {AssemblyInfos.Instance.AppName}{TextConstants.NewLine}"
-                + $"{Locale.MessageBoxHelpBuild}{Date.FormatDate(AssemblyInfos.Instance.AppDateTime, DateFormat.DateHuman)}{TextConstants.NewLine}"
-                + $"{Locale.MessageBoxHelpVersion}{AssemblyInfos.Instance.AppVersion}{TextConstants.NewLine}";
+            var aboutMessage = Locale.MessageBoxHelpAbout
+                + TextConstants.NewLine + TextConstants.NewLine
+                + $"{AssemblyInfos.Instance.AppCompanyName} - {AssemblyInfos.Instance.AppName}"
+                + TextConstants.NewLine
+                + Locale.MessageBoxHelpBuild + Date.FormatDate(AssemblyInfos.Instance.AppDateTime, DateFormat.DateHuman)
+                + TextConstants.NewLine
+                + Locale.MessageBoxHelpVersion + AssemblyInfos.Instance.AppVersion
+                + TextConstants.NewLine;
 
             // Fill MessageBox parameters
-            var messageBoxContent = $"{helpMessage}{TextConstants.NewLine}{TextConstants.NewLine}{TextConstants.NewLine}{aboutMessage}";
+            var messageBoxContent = helpMessage
+                + TextConstants.NewLine + TextConstants.NewLine + TextConstants.NewLine
+                + aboutMessage;
             var messageBoxCaption = Locale.MessageBoxHelpCaption;
 
             MessageBox.Show(messageBoxContent, messageBoxCaption, MessageBoxButton.OK, MessageBoxImage.Question);
