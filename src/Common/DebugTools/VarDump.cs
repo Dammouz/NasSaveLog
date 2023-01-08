@@ -1,5 +1,5 @@
+using System.Text.Json;
 using Common.Html.Maker;
-using Newtonsoft.Json;
 
 namespace Common.DebugTools
 {
@@ -22,7 +22,11 @@ namespace Common.DebugTools
         /// <returns></returns>
         public static string VarDumpJson(object objectToDump)
         {
-            return VarDumpJson(objectToDump, Formatting.Indented);
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true
+            };
+            return VarDumpJson(objectToDump, options);
         }
 
         /// <summary>
@@ -31,9 +35,9 @@ namespace Common.DebugTools
         /// <param name="objectToDump">object to dump</param>
         /// <param name="format">special format</param>
         /// <returns></returns>
-        public static string VarDumpJson(object objectToDump, Formatting format)
+        public static string VarDumpJson(object objectToDump, JsonSerializerOptions options)
         {
-            return JsonConvert.SerializeObject(objectToDump, format);
+            return JsonSerializer.Serialize(objectToDump, options);
         }
 
         /// <summary>
@@ -43,7 +47,7 @@ namespace Common.DebugTools
         /// <returns></returns>
         public static string VarDumpJsonUnformatted(object objectToDump)
         {
-            return VarDumpJson(objectToDump, Formatting.None);
+            return VarDumpJson(objectToDump, new JsonSerializerOptions());
         }
     }
 }

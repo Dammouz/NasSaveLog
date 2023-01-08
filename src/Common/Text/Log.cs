@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Common.Constants;
 using Common.Enums;
 
