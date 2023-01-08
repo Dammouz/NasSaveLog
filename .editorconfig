@@ -1,4 +1,18 @@
-﻿[*.cs]
+# Top-most EditorConfig file
+root = true
+
+
+[*]
+end_of_line = crlf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+indent_style = space
+
+
+[*.cs]
+# 4 space indentation
+indent_size = 4
 
 # IDE0063: Use simple 'using' statement
 csharp_prefer_simple_using_statement = false
