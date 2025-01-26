@@ -7,7 +7,7 @@ namespace Common.Assemblies
 {
     public sealed class AssemblyInfos
     {
-        private static readonly Lazy<AssemblyInfos> s_lazy = new Lazy<AssemblyInfos>(() => new AssemblyInfos(null));
+        private static readonly Lazy<AssemblyInfos> s_lazy = new(() => new AssemblyInfos(null));
         public static AssemblyInfos Instance => s_lazy.Value;
 
         public readonly string AppCompanyName;

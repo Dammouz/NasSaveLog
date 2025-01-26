@@ -3,7 +3,7 @@
   <PropertyGroup>
 
     <AssemblyName>Common.Tests</AssemblyName>
-    <TargetFrameworks>net6.0;net472</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
 
     <OutDir>..\bin\$(Configuration)\$(TargetFramework)\Tests\</OutDir>
 
@@ -12,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="NUnit" />
+    <PackageReference Include="NUnit.Analyzers" />
     <PackageReference Include="NUnit3TestAdapter" />
   </ItemGroup>
 

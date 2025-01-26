@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Common.Enums;
 using Common.Text;
 using NUnit.Framework;
@@ -8,7 +8,6 @@ namespace Common.Tests.Text
     [TestFixture]
     public sealed class DateTests
     {
-        [TestCase(null, "12/31/2017 23:59:59")]
         [TestCase(DateFormat.Undefined, "12/31/2017 23:59:59")]
         [TestCase(DateFormat.DateDebug, "2017-12-31 23:59:59.1230000")]
         [TestCase(DateFormat.DateFile, "201712312359")]

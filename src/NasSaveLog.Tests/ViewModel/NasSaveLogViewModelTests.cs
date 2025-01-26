@@ -12,13 +12,13 @@ namespace NasSaveLog.Tests.ViewModel
             // Arrange
             var vm = new NasSaveLogViewModel();
             var nasSaveLog = vm.LogObjectViewModel;
-            Assert.That(nasSaveLog.IsError, Is.EqualTo(false), "Is Error is not equals or initialized to 'false'.");
+            Assert.That(nasSaveLog.IsError, Is.False, "Is Error is not equals or initialized to 'false'.");
 
             // Act
             vm.IsError = true;
 
             // Assert
-            Assert.That(nasSaveLog.IsError, Is.EqualTo(true), $"LogObjectViewModel.IsError hasn't been changed.");
+            Assert.That(nasSaveLog.IsError, Is.True, $"LogObjectViewModel.IsError hasn't been changed.");
         }
     }
 }

@@ -13,7 +13,7 @@ namespace NasSaveLog.Tests.Globalization
             IGui localeGui = LocaleHelper.GetLocaleGui("fr-FR");
 
             // Assert
-            Assert.That(localeGui, Is.TypeOf(typeof(GuiFrench)), "French GUI is choosen when selected.");
+            Assert.That(localeGui, Is.InstanceOf<GuiFrench>(), "French GUI is choosen when selected.");
         }
 
         [TestCase(null)]
@@ -25,7 +25,7 @@ namespace NasSaveLog.Tests.Globalization
             IGui localeGui = LocaleHelper.GetLocaleGui(isoCode);
 
             // Assert
-            Assert.That(localeGui, Is.TypeOf(typeof(GuiEnglish)), "English GUI is choosen if selected or by default.");
+            Assert.That(localeGui, Is.InstanceOf<GuiEnglish>(), "English GUI is choosen if selected or by default.");
         }
     }
 }

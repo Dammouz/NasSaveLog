@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -19,23 +19,20 @@ namespace Common.WriteStream
         public static bool WriteFilePath(string filePath, string fileName, string fileContent, bool appendToFile)
         {
             Console.WriteLine(fileContent);
-            bool isOk;
             try
             {
-                using (var swFile = new StreamWriter(Path.Combine(filePath, fileName), appendToFile, Encoding.UTF8))
+                using (var swFile = new StreamWriter(Path.Combine(filePath, fileName), appendToFile, new UTF8Encoding(false)))
                 {
                     swFile.WriteLine(fileContent);
                 }
 
-                isOk = true;
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                isOk = WriteFilePath(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), fileName, fileContent, appendToFile);
+                return WriteFilePath(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), fileName, fileContent, appendToFile);
             }
-
-            return isOk;
         }
 
         /// <summary>

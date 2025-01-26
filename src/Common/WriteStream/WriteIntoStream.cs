@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 using Common.Enums;
 using Common.Text;
 
@@ -24,7 +25,7 @@ namespace Common.WriteStream
             {
                 using (var fileStream = File.Open(path, mode, access))
                 {
-                    using (var streamWriter = new StreamWriter(fileStream))
+                    using (var streamWriter = new StreamWriter(fileStream, new UTF8Encoding(false)))
                     {
                         streamWriter.WriteLine(Date.FormatDate(DateTime.UtcNow, DateFormat.DateDebug));
                         streamWriter.WriteLine(message);
