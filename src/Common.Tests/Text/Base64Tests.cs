@@ -6,7 +6,6 @@ namespace Common.Tests.Text
     [TestFixture]
     public sealed class Base64Tests
     {
-
         [Test]
         public void Convertb64()
         {
