@@ -2,7 +2,7 @@
 {
     public static class HtmlColor
     {
-        public static readonly string HtmlColorOk = "green";
-        public static readonly string HtmlColorNok = "red";
+        public const string HtmlColorOk = "green";
+        public const string HtmlColorNok = "red";
     }
 }

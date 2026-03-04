@@ -11,17 +11,19 @@ namespace NasSaveLog.Views
         [STAThread]
         private static void Main(string[] args)
         {
-            if (args.Length < 1)
+            if (args.Length > 0)
             {
-                var app = new App();
-                app.InitializeComponent();
-                app.Run();
+                return;
             }
+
+            var app = new App();
+            app.InitializeComponent();
+            app.Run();
         }
 
         protected void AppStartup(object sender, StartupEventArgs e)
         {
-            this.StartupUri = new Uri($"{nameof(NasSaveLogView)}.xaml", UriKind.Relative);
+            StartupUri = new Uri($"{nameof(NasSaveLogView)}.xaml", UriKind.Relative);
         }
     }
 }

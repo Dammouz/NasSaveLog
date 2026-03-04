@@ -31,10 +31,10 @@ namespace Common.Tests.Extensions
         public void GivenAnObjectNull_ThenShouldDumpAsOneValue()
         {
             // Arrange
-            object nullObject = null;
+            const object NullObject = null;
 
             // Act
-            var result = nullObject.Dump();
+            var result = NullObject.Dump();
 
             // Assert
             Assert.That(result, Is.EqualTo("null"), "Extension method object.Dump() is not given the expected result.");
@@ -56,27 +56,29 @@ namespace Common.Tests.Extensions
                 LogInfo = "MoreInfosToGive",
                 IsError = true,
                 LogExt = "ext",
-                Path = "C:\\titi\\tata"
+                Path = @"C:\titi\tata"
             };
 
-            var expectedResult = @"{
-  ""Content"": ""content of log nas"",
-  ""Contents"": [
-    ""content"",
-    ""of log nas""
-  ],
-  ""LogDateTime"": ""2018-01-01T21:59:59.123Z"",
-  ""LogInfo"": ""MoreInfosToGive"",
-  ""IsError"": true,
-  ""LogExt"": ""ext"",
-  ""Path"": ""C:\\titi\\tata""
-}";
+            const string ExpectedResult = """
+                                          {
+                                            "Content": "content of log nas",
+                                            "Contents": [
+                                              "content",
+                                              "of log nas"
+                                            ],
+                                            "LogDateTime": "2018-01-01T21:59:59.123Z",
+                                            "LogInfo": "MoreInfosToGive",
+                                            "IsError": true,
+                                            "LogExt": "ext",
+                                            "Path": "C:\\titi\\tata"
+                                          }
+                                          """;
 
             // Act
             var result = moreComplexObject.Dump();
 
             // Assert
-            Assert.That(result, Is.EqualTo(expectedResult), "Extension method object.Dump() is not given the expected result.");
+            Assert.That(result, Is.EqualTo(ExpectedResult), "Extension method object.Dump() is not given the expected result.");
         }
 
         [Test]
@@ -95,15 +97,15 @@ namespace Common.Tests.Extensions
                 LogInfo = "MoreInfosToGive",
                 IsError = true,
                 LogExt = "ext",
-                Path = "C:\\titi\\tata"
+                Path = @"C:\titi\tata"
             };
-            var expectedResult = @"{""Content"":""content of log nas"",""Contents"":[""content"",""of log nas""],""LogDateTime"":""2018-01-01T21:59:59.123Z"",""LogInfo"":""MoreInfosToGive"",""IsError"":true,""LogExt"":""ext"",""Path"":""C:\\titi\\tata""}";
+            const string ExpectedResult = """{"Content":"content of log nas","Contents":["content","of log nas"],"LogDateTime":"2018-01-01T21:59:59.123Z","LogInfo":"MoreInfosToGive","IsError":true,"LogExt":"ext","Path":"C:\\titi\\tata"}""";
 
             // Act
             var result = logNas.DumpUnFormatted();
 
             // Assert
-            Assert.That(result, Is.EqualTo(expectedResult), "Extension method object.DumpUnFormatted() is not given the expected result.");
+            Assert.That(result, Is.EqualTo(ExpectedResult), "Extension method object.DumpUnFormatted() is not given the expected result.");
         }
     }
 }

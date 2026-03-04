@@ -27,7 +27,7 @@ namespace Common.WriteStream
                 {
                     using (var streamWriter = new StreamWriter(fileStream, new UTF8Encoding(false)))
                     {
-                        streamWriter.WriteLine(Date.FormatDate(DateTime.UtcNow, DateFormat.DateDebug));
+                        streamWriter.WriteLine(DateHelper.FormatDate(DateTime.UtcNow, DateFormat.DateDebug));
                         streamWriter.WriteLine(message);
                         streamWriter.WriteLine();
                     }

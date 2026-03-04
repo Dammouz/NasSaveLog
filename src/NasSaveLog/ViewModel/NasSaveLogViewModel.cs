@@ -8,7 +8,6 @@ using System.Windows.Input;
 using Common.Assemblies;
 using Common.Constants;
 using Common.Enums;
-using Common.Extensions;
 using Common.Text;
 using Common.WriteStream;
 using NasSaveLog.Business;
@@ -67,20 +66,19 @@ namespace NasSaveLog.ViewModel
         /// </summary>
         public bool IsError
         {
-            get => _isError;
+            get;
             set
             {
-                _isError = value;
-                LogObjectViewModel.IsError = _isError;
-                LogNas.IsError = _isError;
+                field = value;
+                LogObjectViewModel.IsError = field;
+                LogNas.IsError = field;
                 OnPropertyChange();
             }
         }
-        private bool _isError;
 
         private string _previousLogNasPath;
         private readonly string _appName = AssemblyInfos.GetAssemblyName(Assembly.GetExecutingAssembly());
-        private const string _explorerExe = "explorer.exe";
+        private const string ExplorerExe = "explorer.exe";
 
         #endregion Properties
 
@@ -134,7 +132,7 @@ namespace NasSaveLog.ViewModel
         /// </summary>
         /// <param name="fieldContent">content of the field</param>
         /// <param name="fieldInitialValue">initial value of the field</param>
-        /// <param name="fieldErrorMessage">error mesage in case of</param>
+        /// <param name="fieldErrorMessage">error message in case of</param>
         /// <returns></returns>
         private static bool IsFieldOK(string fieldContent, string fieldInitialValue, string fieldErrorMessage/*, object controlField*/)
         {
@@ -181,7 +179,7 @@ namespace NasSaveLog.ViewModel
         /// <summary>
         /// Command to save log.
         /// </summary>
-        public ICommand SaveLogCommand => new RelayCommand(x => SaveLog());
+        public ICommand SaveLogCommand => new RelayCommand(_ => SaveLog());
 
         /// <summary>
         /// Save log.
@@ -213,23 +211,25 @@ namespace NasSaveLog.ViewModel
         /// <summary>
         /// Command to open log folder.
         /// </summary>
-        public ICommand OpenLogCommand => new RelayCommand(x => OpenLog());
+        public ICommand OpenLogCommand => new RelayCommand(_ => OpenLog());
 
         /// <summary>
         /// Open log folder.
         /// </summary>
         public void OpenLog()
         {
-            if (_previousLogNasPath.IsNotNullNorEmpty())
+            if (string.IsNullOrEmpty(_previousLogNasPath))
             {
-                try
-                {
-                    System.Diagnostics.Process.Start(_explorerExe, _previousLogNasPath);
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show($"{exception.Message}{TextConstants.NewLine}Path: '{_previousLogNasPath}'", "An error occurs", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                return;
+            }
+
+            try
+            {
+                System.Diagnostics.Process.Start(ExplorerExe, _previousLogNasPath);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show($"{exception.Message}{TextConstants.NewLine}Path: '{_previousLogNasPath}'", "An error occurs", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -240,7 +240,7 @@ namespace NasSaveLog.ViewModel
         /// <summary>
         /// Command to display help.
         /// </summary>
-        public static ICommand DisplayHelpCommand => new RelayCommand(x => DisplayHelp());
+        public static ICommand DisplayHelpCommand => new RelayCommand(_ => DisplayHelp());
 
         /// <summary>
         /// Display help.
@@ -253,9 +253,9 @@ namespace NasSaveLog.ViewModel
             // About:
             var aboutMessage = Locale.MessageBoxHelpAbout
                 + TextConstants.NewLine + TextConstants.NewLine
-                + $"{AssemblyInfos.Instance.AppCompanyName} - {AssemblyInfos.Instance.AppName}"
+                + $"{AssemblyInfos.Instance.AppCompanyName} - {AssemblyInfos.Instance.AppName} - {AssemblyInfos.Instance.AppAuthor}"
                 + TextConstants.NewLine
-                + Locale.MessageBoxHelpBuild + Date.FormatDate(AssemblyInfos.Instance.AppDateTime, DateFormat.DateHuman)
+                + Locale.MessageBoxHelpBuild + DateHelper.FormatDate(AssemblyInfos.Instance.AppDateTime, DateFormat.DateHuman)
                 + TextConstants.NewLine
                 + Locale.MessageBoxHelpVersion + AssemblyInfos.Instance.AppVersion
                 + TextConstants.NewLine;
@@ -276,7 +276,7 @@ namespace NasSaveLog.ViewModel
         /// <summary>
         /// Command to clear log.
         /// </summary>
-        public ICommand ClearLogCommand => new RelayCommand(x => ClearLog());
+        public ICommand ClearLogCommand => new RelayCommand(_ => ClearLog());
 
         /// <summary>
         /// Clear log.

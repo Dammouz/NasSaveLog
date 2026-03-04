@@ -3,7 +3,7 @@ using Common.Enums;
 
 namespace Common.Text
 {
-    public static class Date
+    public static class DateHelper
     {
         /// <summary>
         /// Formate date in function of a pattern.

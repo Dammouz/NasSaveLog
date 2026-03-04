@@ -26,9 +26,9 @@ namespace NasSaveLog.Views
         /// <param name="e"></param>
         private void TextBoxLogContent_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (this.TextBoxLogContent.Text.Equals(NasSaveLogViewModel.Locale.InitialTextOnLogContent))
+            if (TextBoxLogContent.Text.Equals(NasSaveLogViewModel.Locale.InitialTextOnLogContent))
             {
-                this.TextBoxLogContent.Text = string.Empty;
+                TextBoxLogContent.Text = string.Empty;
             }
         }
 
@@ -39,9 +39,9 @@ namespace NasSaveLog.Views
         /// <param name="e"></param>
         private void TextBoxInfoName_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (this.TextBoxInfoName.Text.Equals(NasSaveLogViewModel.Locale.InitialTextOnInfoName))
+            if (TextBoxInfoName.Text.Equals(NasSaveLogViewModel.Locale.InitialTextOnInfoName))
             {
-                this.TextBoxInfoName.Text = string.Empty;
+                TextBoxInfoName.Text = string.Empty;
             }
         }
 
@@ -54,7 +54,7 @@ namespace NasSaveLog.Views
         {
             if (e.Key == Key.Enter)
             {
-                this.ButtonSave.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+                ButtonSave.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
             }
         }
 

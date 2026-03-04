@@ -13,11 +13,12 @@ namespace Common.Tests.Text
         public void GivenAMessage_WhenLogging_ThenShouldReturnCompleteMatchingWithTime()
         {
             // Arrange
+            // ReSharper disable once ConvertToConstant.Local
             var message = "Test de fonction LogMsg().";
 
             // Act
             var mesageLogged = Log.LogMessage(message);
-            var expectedLogging = $"{TextConstants.NewLine}{Date.FormatDate(DateTime.UtcNow, DateFormat.DateLog)} : Test de fonction LogMsg().";
+            var expectedLogging = $"{TextConstants.NewLine}{DateHelper.FormatDate(DateTime.UtcNow, DateFormat.DateLog)} : Test de fonction LogMsg().";
 
             // Assert
             Assert.That(mesageLogged, Is.EqualTo(expectedLogging),

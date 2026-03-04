@@ -18,17 +18,17 @@ namespace Common.Assemblies
 
         private AssemblyInfos(Assembly assembly)
         {
-            var innerAassembly = assembly ?? Assembly.GetExecutingAssembly();
-            var innerAssemblyName = innerAassembly.GetName();
-            AppVersion = innerAssemblyName.Version.ToString();
+            var innerAssembly = assembly ?? Assembly.GetExecutingAssembly();
+            var innerAssemblyName = innerAssembly.GetName();
+            AppVersion = innerAssemblyName.Version?.ToString();
             AppName = innerAssemblyName.Name;
-            AppDateTime = GetAssemblyDate(innerAassembly);
-            AppCompanyName = innerAassembly.GetCustomAttributes<AssemblyCompanyAttribute>()?.First()?.Company;
+            AppDateTime = GetAssemblyDate(innerAssembly);
+            AppCompanyName = innerAssembly.GetCustomAttributes<AssemblyCompanyAttribute>().First().Company;
             AppAuthor = AppCompanyName;
         }
 
         /// <summary>
-        /// Retrive the building datetime of the assemby.
+        /// Retrieve the building datetime of the assembly.
         /// </summary>
         /// <param name="assembly">assembly to analyze</param>
         /// <returns>assembly date</returns>

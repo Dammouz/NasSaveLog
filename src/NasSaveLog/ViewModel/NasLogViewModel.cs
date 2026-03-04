@@ -9,41 +9,38 @@ namespace NasSaveLog.ViewModel
         /// </summary>
         public string LogContentText
         {
-            get => _logContentText;
+            get;
             set
             {
-                _logContentText = value;
+                field = value;
                 OnPropertyChange();
             }
         }
-        private string _logContentText;
 
         /// <summary>
         /// Info Name Text.
         /// </summary>
         public string InfoNameText
         {
-            get => _infoNameText;
+            get;
             set
             {
-                _infoNameText = value;
+                field = value;
                 OnPropertyChange();
             }
         }
-        private string _infoNameText;
 
         /// <summary>
         /// Is Error.
         /// </summary>
         public bool IsError
         {
-            get => _isError;
+            get;
             set
             {
-                _isError = value;
+                field = value;
                 OnPropertyChange();
             }
         }
-        private bool _isError;
     }
 }

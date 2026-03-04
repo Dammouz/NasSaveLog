@@ -33,7 +33,7 @@ namespace Common.DebugTools
         /// Equivalent of var_dump in PHP, permit to display all propertes of an object, into JSON format.
         /// </summary>
         /// <param name="objectToDump">object to dump</param>
-        /// <param name="format">special format</param>
+        /// <param name="options">format options</param>
         /// <returns></returns>
         public static string VarDumpJson(object objectToDump, JsonSerializerOptions options)
         {

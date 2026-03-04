@@ -13,8 +13,8 @@ namespace Common.Text
         /// <returns>logged message</returns>
         public static string LogMessage(string messageToLog)
         {
-            Console.WriteLine($"{Date.FormatDate(DateTime.UtcNow, DateFormat.DateLog)} : {messageToLog}"); // Debug
-            return $"{TextConstants.NewLine}{Date.FormatDate(DateTime.UtcNow, DateFormat.DateLog)} : {messageToLog}";
+            Console.WriteLine($"{DateHelper.FormatDate(DateTime.UtcNow, DateFormat.DateLog)} : {messageToLog}"); // Debug
+            return $"{TextConstants.NewLine}{DateHelper.FormatDate(DateTime.UtcNow, DateFormat.DateLog)} : {messageToLog}";
         }
     }
 }

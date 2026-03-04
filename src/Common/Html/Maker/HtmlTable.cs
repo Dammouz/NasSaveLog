@@ -108,6 +108,6 @@ namespace Common.Html.Maker
         /// <summary>
         /// Close the table.
         /// </summary>
-        public static readonly string MakeHtmlTableEnd = "</table>";
+        public const string MakeHtmlTableEnd = "</table>";
     }
 }

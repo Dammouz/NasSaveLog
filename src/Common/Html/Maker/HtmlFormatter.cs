@@ -18,7 +18,7 @@ namespace Common.Html.Maker
         /// <summary>
         /// Make OK message.
         /// </summary>
-        /// <param name="msgOk">message OK</param>
+        /// <param name="messageOk">message OK</param>
         /// <returns></returns>
         public static string MakeHtmlCheckOk(string messageOk)
         {
@@ -28,7 +28,7 @@ namespace Common.Html.Maker
         /// <summary>
         /// Make NOK message.
         /// </summary>
-        /// <param name="msgNok">message NOK</param>
+        /// <param name="messageNok">message NOK</param>
         /// <returns></returns>
         public static string MakeHtmlCheckNok(string messageNok)
         {
@@ -38,7 +38,8 @@ namespace Common.Html.Maker
         /// <summary>
         /// Make a bold message with color.
         /// </summary>
-        /// <param name="msgNok">message</param>
+        /// <param name="color">color</param>
+        /// <param name="message">message</param>
         /// <returns>boled colored message</returns>
         public static string MakeHtmlCheckWithColor(string color, string message)
         {

@@ -10,7 +10,7 @@ namespace NasSaveLog.Tests.Globalization
         public void GivenFrenchIsoCode_ThenShouldRetrieveFrenchGuiObject()
         {
             // Arrange & Act
-            IGui localeGui = LocaleHelper.GetLocaleGui("fr-FR");
+            var localeGui = LocaleHelper.GetLocaleGui("fr-FR");
 
             // Assert
             Assert.That(localeGui, Is.InstanceOf<GuiFrench>(), "French GUI is choosen when selected.");
@@ -22,7 +22,7 @@ namespace NasSaveLog.Tests.Globalization
         public void GivenEnglishIsoCodeOrNothing_ThenShouldRetrieveEnglishGuiObject(string isoCode)
         {
             // Arrange & Act
-            IGui localeGui = LocaleHelper.GetLocaleGui(isoCode);
+            var localeGui = LocaleHelper.GetLocaleGui(isoCode);
 
             // Assert
             Assert.That(localeGui, Is.InstanceOf<GuiEnglish>(), "English GUI is choosen if selected or by default.");

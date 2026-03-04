@@ -8,10 +8,12 @@ namespace Common.Tests.DebugTools
     {
         [TestCase(5, "5")]
         [TestCase("Hello !", "\"Hello !\"")]
-        [TestCase(new[] { "toto", "tata" }, @"[
-  ""toto"",
-  ""tata""
-]")]
+        [TestCase(new[] { "toto", "tata" }, """
+                                            [
+                                              "toto",
+                                              "tata"
+                                            ]
+                                            """)]
         public void GivenSimpleObject_WhenDumping_ThenShouldReturnCorrectString(object varToDump, object expectedResult)
         {
             // Arrange & Act
@@ -36,21 +38,23 @@ namespace Common.Tests.DebugTools
                     SubProperty2 = 422
                 }
             };
-            var expectedDump = @"{
-  ""Id"": 42,
-  ""PropertyString"": ""toto"",
-  ""PropertyDouble"": 4.2,
-  ""PropertyObject"": {
-    ""SubProperty1"": ""SubObject"",
-    ""SubProperty2"": 422
-  }
-}";
+            const string ExpectedDump = """
+                                        {
+                                          "Id": 42,
+                                          "PropertyString": "toto",
+                                          "PropertyDouble": 4.2,
+                                          "PropertyObject": {
+                                            "SubProperty1": "SubObject",
+                                            "SubProperty2": 422
+                                          }
+                                        }
+                                        """;
 
             // Act
             var resultOfVarDump = VarDump.VarDumpJson(varToDump);
 
             // Assert
-            Assert.That(resultOfVarDump, Is.EqualTo(expectedDump), $"Essaye encore de trouver le VarDump de {varToDump}");
+            Assert.That(resultOfVarDump, Is.EqualTo(ExpectedDump), $"Essaye encore de trouver le VarDump de {varToDump}");
         }
     }
 }

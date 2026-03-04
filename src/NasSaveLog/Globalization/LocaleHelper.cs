@@ -1,6 +1,5 @@
 using System.Globalization;
 using System.Linq;
-using Common.Extensions;
 
 namespace NasSaveLog.Globalization
 {
@@ -13,12 +12,12 @@ namespace NasSaveLog.Globalization
         /// <returns></returns>
         public static IGui MakeLocales(string locale)
         {
-            if (locale.IsNotNullNorEmpty() && IsExistingCulture(locale))
+            if (!string.IsNullOrEmpty(locale) && IsExistingCulture(locale))
             {
                 return GetLocaleGui(locale);
             }
 
-            CultureInfo installedCulture = CultureInfo.InstalledUICulture;
+            var installedCulture = CultureInfo.InstalledUICulture;
             return GetLocaleGui(installedCulture.Name);
         }
 

@@ -10,10 +10,8 @@ namespace NasSaveLog.Business
     {
         internal NasLog(string appName)
         {
-            _appName = appName;
+            FullLogName = appName;
         }
-
-        private readonly string _appName;
 
         /// <summary>
         /// Content.
@@ -34,14 +32,14 @@ namespace NasSaveLog.Business
         /// <summary>
         /// Errors.
         /// </summary>
-        public bool IsError { get; set; } = false;
+        public bool IsError { get; set; }
         public string LogType => IsError ? "error" : "log";
 
         /// <summary>
         /// File name.
         /// </summary>
         public string LogExt { get; set; } = "log";
-        public string FullLogName => $"{_appName}-{LogType}-{Date.FormatDate(LogDateTime, DateFormat.DateFile)}-{LogInfo.MakeValidFileNameFromInvalid()}.{LogExt}";
+        public string FullLogName => $"{field}-{LogType}-{DateHelper.FormatDate(LogDateTime, DateFormat.DateFile)}-{LogInfo.MakeValidFileNameFromInvalid()}.{LogExt}";
 
         /// <summary>
         /// Paths.

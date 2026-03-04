@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace Common.Tests.Text
 {
     [TestFixture]
-    public sealed class DateTests
+    public sealed class DateHelperTests
     {
         [TestCase(DateFormat.Undefined, "12/31/2017 23:59:59")]
         [TestCase(DateFormat.DateDebug, "2017-12-31 23:59:59.1230000")]
@@ -20,7 +20,7 @@ namespace Common.Tests.Text
             var date = new DateTime(2017, 12, 31, 23, 59, 59, 123, DateTimeKind.Utc);
 
             // Act
-            var resultFormatted = Date.FormatDate(date, format);
+            var resultFormatted = DateHelper.FormatDate(date, format);
 
             // Assert
             Assert.That(resultFormatted, Is.EqualTo(expected), "Failed to format.");
